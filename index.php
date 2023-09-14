@@ -17,3 +17,4 @@ $template_data = $page->getTemplateData();
 include_once 'page/header.php';
 include_once $template;
 include_once 'page/footer.php';
+?>

@@ -3,10 +3,10 @@
 
 class Controller {
 
-    protected array $page_data = array();
-    protected array $controller_parameters;
-    protected string $template_path = '';
-    protected array $template_data = array('test_data'=>'test_data');
+    protected array $page_data = array(); // data usage in <html> and <head>
+    protected array $controller_parameters; // url parameters /app/controller_parameter/controller_parameter
+    protected string $template_path = ''; // TODO manualy change template
+    protected array $template_data = array('test_data'=>'test_data'); // data usage in template 
     protected array $data;
 
     public function __construct(array $_get_data, array $_post_data, array $controller_parameters) {
@@ -42,16 +42,12 @@ class Controller {
 
     private function fillControllerParameters(array $controller_parameters): void {
         foreach ($controller_parameters as $parameter) {
-            $this->controller_parameters[$parameter] = true;
+            $this->controller_parameters[] = $parameter;
         }
     }
 
     protected function addTemplateData(string $variable, mixed $value): void {
         $this->template_data[$variable] = $value;
-    }
-
-    protected function getControllerParam(string $param) {
-        return (isset($this->controller_parameters[$param])) ? $this->controller_parameters[$param] : null;
     }
 
     public function getTemplateData(): array {

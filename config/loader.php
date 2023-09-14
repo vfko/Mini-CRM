@@ -41,3 +41,7 @@ include 'app/homepage/models/HomepageModel.php';
 
 // App error-page
 include 'app/error-page/controllers/ErrorPageController.php';
+
+// App Administrace
+include 'app/administrace/controllers/AdministraceController.php';
+include 'app/administrace/models/AdministraceModel.php';

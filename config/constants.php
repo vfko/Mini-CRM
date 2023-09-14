@@ -47,3 +47,5 @@ define('SUCCESSFUL_DELETE_MSG', 'The item has been removed');
 /**
  * DB tables
  */
+
+ include 'config/db_tables.php';
