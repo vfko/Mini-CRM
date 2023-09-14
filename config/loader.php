@@ -15,10 +15,13 @@ include 'library/built-in/Router.php';
 include 'library/built-in/App.php';
 
 // Database
-include 'library/built-in/MysqliDb.php';
+include_once 'library/built-in/MysqliDb.php';
 
 // Main Controller
 include 'library/built-in/Controller.php';
+
+// Model
+include 'library/built-in/Model.php';
 
 // Flash message
 include 'library/built-in/FlashMessage.php';

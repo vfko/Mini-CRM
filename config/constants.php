@@ -4,10 +4,10 @@
 /**
  * DB
  */
-define('DB_HOST', '');
-define('DB_NAME', '');
-define('DB_USER', '');
-define('DB_PASS', '');
+define('DB_HOST', 'database');
+define('DB_NAME', 'somnia');
+define('DB_USER', 'somnia');
+define('DB_PASS', 'somnia159753');
 define('DB_PORT', null);
 define('DB_CHARSET', 'utf8');
 define('DB_SOCKET', null);
