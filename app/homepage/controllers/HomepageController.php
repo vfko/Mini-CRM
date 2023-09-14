@@ -5,11 +5,11 @@ class HomepageController extends Controller {
     /**
      * Contain <html> or <head> data
      */
-    const TITLE = 'Somnia';
+    const TITLE = '';
     const DESCRIPTION = '';
     const KEY_WORDS = '';
-    const LANG = 'cs';
-    const CUSTOM_PAGE_DATA = array();
+    const LANG = '';
+    const CUSTOM_PAGE_DATA = array('example_key'=>'example_value');
     /** */
 
     private object $model;
