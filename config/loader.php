@@ -17,11 +17,14 @@ include 'library/built-in/App.php';
 // Database
 include_once 'library/built-in/MysqliDb.php';
 
-// Main Controller
+// Parent Controller
 include 'library/built-in/Controller.php';
 
-// Model
+// Parent Model
 include 'library/built-in/Model.php';
+
+// Authenticate
+include 'library/built-in/Authenticate.php';
 
 // Flash message
 include 'library/built-in/FlashMessage.php';
