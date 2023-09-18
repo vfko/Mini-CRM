@@ -11,6 +11,8 @@ class PersonalistikaModel extends Model {
         PRACOVNI_POZICE => TABLE_JOB
     );
 
+    private array $employees = array();
+
     public function __construct() {
         parent::__construct();
     }
@@ -21,24 +23,37 @@ class PersonalistikaModel extends Model {
             return $this->getTenders($this->getTableData($this->tables[$controller_parameter]));
         }
 
+        if ($controller_parameter === ZAMESTNANCI) {
+            $this->employees = $this->sortTableRowsById($this->getTableData(TABLE_EMPLOYEE));
+            return $this->employees;
+        }
+
         if ($sort_by_ids) {
             return $this->sortTableRowsById($this->getTableData($this->tables[$controller_parameter]));
         }
         return $this->getTableData($this->tables[$controller_parameter]);
     }
 
-    public function getLanguages(bool $sort_by_ids = false) {
-        if ($sort_by_ids) {
-            return $this->sortTableRowsById($this->getTableData(TABLE_LANGUAGE));
-        }
-        return $this->getTableData(TABLE_LANGUAGE);
+    public function getFormatedRows(string $table) {
+        return $this->sortTableRowsById($this->getTableData($table));
     }
 
-    public function getJobs(bool $sort_by_ids = false) {
-        if ($sort_by_ids) {
-            return $this->sortTableRowsById($this->getTableData(TABLE_JOB));
+    public function getOperators() {
+        $result = array();
+        $operators = $this->sortTableRowsById($this->getTableData(TABLE_OPERATOR));
+        foreach ($operators as $operator) {
+            $result[$operator['id']] = $this->employees[$operator['id']];
         }
-        return $this->getTableData(TABLE_JOB);
+        return $result;
+    }
+
+    public function getSellers() {
+        $result = array();
+        $sellers = $this->sortTableRowsById($this->getTableData(TABLE_SELLER));
+        foreach ($sellers as $seller) {
+            $result[$seller['id']] = $this->employees[$seller['id']];
+        }
+        return $result;
     }
 
     private function getTenders(array $tender_table_rows) {

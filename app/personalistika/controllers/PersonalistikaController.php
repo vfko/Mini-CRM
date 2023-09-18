@@ -1,5 +1,5 @@
 <?php
-
+// TODO: Zaměstnanci/ nefunkční add a update
 class PersonalistikaController extends Controller {
 
     /**
@@ -25,8 +25,15 @@ class PersonalistikaController extends Controller {
 
     private function setTableData() {
         $this->setTableRows();
-        $this->addTemplateData('languages', $this->model->getLanguages(true));
-        $this->addTemplateData('jobs', $this->model->getJobs(true));
+        $this->setTypeOfCommissionPartners();
+        $this->setAssignedOperators();
+        $this->setAssignedSellers();
+        $this->addTemplateData('languages', $this->model->getFormatedRows(TABLE_LANGUAGE));
+        $this->addTemplateData('jobs', $this->model->getFormatedRows(TABLE_JOB));
+        $this->addTemplateData('sex', $this->model->getFormatedRows(TABLE_SEX));
+        $this->addTemplateData('martial_status', $this->model->getFormatedRows(TABLE_MARTIAL_STATUS));
+        $this->addTemplateData('nationality', $this->model->getFormatedRows(TABLE_NATIONALITY));
+        $this->addTemplateData('kind_of_collaboration', $this->model->getFormatedRows(TABLE_KIND_OF_COLLABORATION));
     }
 
     private function setTableRows() {
@@ -49,6 +56,24 @@ class PersonalistikaController extends Controller {
             case PRACOVNI_POZICE:
                 $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
                 break;
+        }
+    }
+
+    private function setTypeOfCommissionPartners() {
+        if ($this->controller_parameters[0] == ZAMESTNANCI) {
+            $this->addTemplateData('type_of_comm_partners', $this->model->getFormatedRows(TABLE_TYPE_OF_COMMISSION_PARTNER));
+        }
+    }
+
+    private function setAssignedOperators() {
+        if ($this->controller_parameters[0] == ZAMESTNANCI) {
+            $this->addTemplateData('operators', $this->model->getOperators());
+        }
+    }
+
+    private function setAssignedSellers() {
+        if ($this->controller_parameters[0] == ZAMESTNANCI) {
+            $this->addTemplateData('sellers', $this->model->getSellers());
         }
     }
 

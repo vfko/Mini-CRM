@@ -28,3 +28,5 @@ define('TABLE_TYPE_OF_REFERENCE', 'type_of_reference');
 define('TABLE_METHOD_OF_RECEIVING_REF', 'method_of_receiving_ref');
 define('TABLE_TENDER', 'tender');
 define('TABLE_JOB', 'job');
+define('TABLE_OPERATOR', 'operator');
+define('TABLE_SELLER', 'seller');
