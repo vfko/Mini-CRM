@@ -45,3 +45,7 @@ include 'app/error-page/controllers/ErrorPageController.php';
 // App Administrace
 include 'app/administrace/controllers/AdministraceController.php';
 include 'app/administrace/models/AdministraceModel.php';
+
+// App Personalistika
+include 'app/personalistika/controllers/PersonalistikaController.php';
+include 'app/personalistika/models/PersonalistikaModel.php';

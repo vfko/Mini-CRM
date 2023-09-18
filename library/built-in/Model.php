@@ -40,5 +40,12 @@ class Model {
         }
         return $this->db->update($table, $data_to_update);
     }
+
+    public function deleteTableRow(string $table, array $where, int $num_of_rows=null, string $where_operator='=', string $where_condition='AND') {
+        foreach ($where as $column=>$value) {
+            $this->db->where($column, $value, $where_operator, $where_condition);
+        }
+        return $this->db->delete($table, $num_of_rows);
+    }
     
 }

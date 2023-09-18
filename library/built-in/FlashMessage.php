@@ -25,6 +25,10 @@ class FlashMessage {
         return '';
     }
 
+    public function setSession(string $session_name, string $session_value) {
+        $_SESSION[$session_name] = $session_value;
+    }
+
     private function sessionSuccess(): string {
         return '<div class="alert alert-success alert-dismissable">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>

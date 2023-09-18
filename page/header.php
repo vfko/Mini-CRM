@@ -150,12 +150,12 @@
                      </span>
                      </a>
                      <ul class="treeview-menu">
-                        <li><a href="/zamestnanci">Zaměstnanci</a></li>
-                        <li><a href="/platebni-udaje">Platební údaje</a></li>
-                        <li><a href="/uchazeci">Uchazeči</a></li>
-                        <li><a href="/#">Pracovní smlouvy</a></li>
-                        <li><a href="/vyberove-rizeni">Výběrové řízení</a></li>
-                        <li><a href="/pracovni-pozice">Pracovní pozice</a></li>
+                        <li><a href="/personalistika/zamestnanci">Zaměstnanci</a></li>
+                        <li><a href="/personalistika/platebni-udaje">Platební údaje</a></li>
+                        <li><a href="/personalistika/uchazeci">Uchazeči</a></li>
+                        <li><a href="/personalistika/pracovni-smlouvy">Pracovní smlouvy</a></li>
+                        <li><a href="/personalistika/vyberove-rizeni">Výběrové řízení</a></li>
+                        <li><a href="/personalistika/pracovni-pozice">Pracovní pozice</a></li>
                      </ul>
                   </li>
 				<!-- /Hr -->

@@ -49,3 +49,28 @@ define('SUCCESSFUL_DELETE_MSG', 'The item has been removed');
  */
 
  include 'config/db_tables.php';
+
+ /**
+  * Administration URL parameters
+  */
+  define('PERSONALISTIKA', 'personalistika');
+  define('OBCHOD', 'obchod');
+  define('DOPRAVA', 'doprava');
+  define('REFERENCE', 'reference');
+
+  /**
+   * Personalistika URL parameters
+   */
+  define('UCHAZECI', 'uchazeci');
+  define('ZAMESTNANCI', 'zamestnanci');
+  define('PLATEBNI_UDAJE', 'platebni-udaje');
+  define('PRACOVNI_SMLOUVY', 'pracovni-smlouvy'); 
+  define('VYBEROVE_RIZENI', 'vyberove-rizeni');
+  define('PRACOVNI_POZICE', 'pracovni-pozice');
+  
+  /**
+   * Form action
+   */
+  define('ADD', 'add');
+  define('UPDATE', 'update');
+  define('DELETE', 'delete');
