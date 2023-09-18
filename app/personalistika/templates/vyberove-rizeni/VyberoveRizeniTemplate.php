@@ -80,8 +80,8 @@
                                                                 <div class="col-md-12 form-group">
                                                                     <label class="control-label">Uchazeči</label>
                                                                     <?php foreach ($row['candidates'] as $candidate): ?>
-                                                                    <div class="checkbox checkbox-info" n:foreach="$candidates as $candidate">
-                                                                        <input id="<?= $row['id'] ?><?= $candidate['id'] ?>" type="checkbox" name="selected_candidates[]" value="<?= $candidate['id'] ?>" <?php foreach ($row['candidate_id'] as $candidate_id): ?> <?= ($candidate_id == $candidate['id']) ? 'checked' : null ?> <?php endforeach ?>>
+                                                                    <div class="checkbox checkbox-info">
+                                                                        <input id="<?= $row['id'] ?><?= $candidate['id'] ?>" type="checkbox" name="candidate_id[]" value="<?= $candidate['id'] ?>" <?php foreach ($row['candidate_id'] as $candidate_id): ?> <?= ($candidate_id == $candidate['id']) ? 'checked' : null ?> <?php endforeach ?>>
                                                                         <label for="<?= $row['id'] ?><?= $candidate['id'] ?>"><?= $candidate['id'] ?>: <?= $candidate['name'].' '.$candidate['surename'] ?></label>
                                                                     </div>
                                                                     <?php endforeach ?>

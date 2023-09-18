@@ -66,6 +66,9 @@ class PersonalistikaModel extends Model {
         $id = $data_to_update['id'];
         unset($data_to_update['id']);
         unset($data_to_update['submit']);
+        if ($controller_parameter === VYBEROVE_RIZENI) {
+            $data_to_update['candidate_id'] = $this->formatTendersCandidatesToString($data_to_update['candidate_id']);
+        }
         return $this->updateTableRow($this->tables[$controller_parameter], ['id' => $id], $data_to_update);
     }
 
