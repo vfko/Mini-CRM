@@ -96,7 +96,7 @@
                                                                 <!-- Text input-->
                                                                 <div class="col-md-12 form-group">
                                                                     <label class="control-label">Datum narození</label>
-                                                                    <input type="date" name="birthdate" placeholder="Název" value="<?php date('Y-m-d', strtotime($row['birthdate'])) ?>" class="form-control" readonly>
+                                                                    <input type="text" name="birthdate" placeholder="Název" value="<?= date('d.m.Y', strtotime($row['birthdate'])) ?>" class="form-control" readonly>
                                                                 </div>
                                                                 <!-- Text input-->
                                                                 <div class="col-md-12 form-group">

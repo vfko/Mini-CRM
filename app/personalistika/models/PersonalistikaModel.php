@@ -6,7 +6,7 @@ class PersonalistikaModel extends Model {
         UCHAZECI => TABLE_CANDIDATE,
         ZAMESTNANCI => TABLE_EMPLOYEE,
         PLATEBNI_UDAJE => TABLE_EMPLOYEE_PAYMENT,
-        PRACOVNI_SMLOUVY => TABLE_EMPLOYEE_CONTRACT,
+        PRACOVNI_SMLOUVY => TABLE_EMPLOYMENT_CONTRACT,
         VYBEROVE_RIZENI => TABLE_TENDER,
         PRACOVNI_POZICE => TABLE_JOB
     );
@@ -96,7 +96,7 @@ class PersonalistikaModel extends Model {
     /**
      * @return array    array('row_id' => array(row_data))
      */
-    private function sortTableRowsById(array $table_rows, string $controller_parameter=null) {
+    private function sortTableRowsById(array $table_rows): array {
         $result = array();
         foreach ($table_rows as $row) {
             $result[$row['id']] = $row;
@@ -104,11 +104,11 @@ class PersonalistikaModel extends Model {
         return $result;
     }
 
-    private function formatTendersCandidatesToArray(string $tender_candidates) {
+    private function formatTendersCandidatesToArray(string $tender_candidates): array {
         return explode('-', trim($tender_candidates, '-'));
     }
 
-    private function formatTendersCandidatesToString(array $tender_candidates) {
+    private function formatTendersCandidatesToString(array $tender_candidates): string {
         $result = '-';
         foreach ($tender_candidates as $candidate) {
             $result = $result.'-'.$candidate;

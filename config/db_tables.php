@@ -18,7 +18,7 @@ define('TABLE_TYPE_OF_COMMISSION_PARTNER', 'type_of_commission_partner');
 define('TABLE_TYPE_OF_EMPL_CONTRACT', 'type_of_empl_contract');
 define('TABLE_EMPLOYEE', 'employee');
 define('TABLE_EMPLOYEE_PAYMENT', 'employee_payment');
-define('TABLE_EMPLOYEE_CONTRACT', 'employee_contract');
+define('TABLE_EMPLOYMENT_CONTRACT', 'employment_contract');
 define('TABLE_SK_STATE', 'sk_state');
 define('TABLE_PLACE_OF_CONSULTATION', 'place_of_consultation');
 define('TABLE_HOUSEHOLD_TYPE', 'household_type');
