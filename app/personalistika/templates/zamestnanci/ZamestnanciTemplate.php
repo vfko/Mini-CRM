@@ -65,87 +65,87 @@
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Titul</label>
-                                                                        <input type="text" name="title" value="<?= ($row['title'] != '') ? $row['title'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="title" value="<?= ($row['title'] != '') ? $row['title'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Jméno</label>
-                                                                        <input type="text" name="name" value="<?= $row['name'] ?>" class="form-control" disabled>
+                                                                        <input type="text" name="name" value="<?= $row['name'] ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Příjmení</label>
-                                                                        <input type="text" name="surename" value="<?= $row['surename'] ?>" class="form-control" disabled>
+                                                                        <input type="text" name="surename" value="<?= $row['surename'] ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Firemní tel.</label>
-                                                                        <input type="text" name="work_tel" value="<?= ($row['work_tel'] != '') ? $row['work_tel'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="work_tel" value="<?= ($row['work_tel'] != '') ? $row['work_tel'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Soukromý tel.</label>
-                                                                        <input type="text" name="tel" value="<?= ($row['tel'] != '') ? $row['tel'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="tel" value="<?= ($row['tel'] != '') ? $row['tel'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Firemní email</label>
-                                                                        <input type="text" name="surework_emailname" value="<?= ($row['work_email'] != '') ? $row['work_email'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="surework_emailname" value="<?= ($row['work_email'] != '') ? $row['work_email'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Pohlaví</label>
-                                                                        <input type="text" name="sex_id" value="<?= ($row['sex_id'] != '') ? $row['sex_id'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="sex_id" value="<?= ($row['sex_id'] != '') ? $row['sex_id'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Rodinný stav</label>
-                                                                        <input type="text" name="martial_status_id" value="<?= ($row['martial_status_id'] != '') ? $row['martial_status_id'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="martial_status_id" value="<?= ($row['martial_status_id'] != '') ? $row['martial_status_id'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Datum narození</label>
-                                                                        <input type="text" name="birthdate" value="<?= ($row['birthdate'] != '') ? $row['birthdate'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="birthdate" value="<?= ($row['birthdate'] != '') ? $row['birthdate'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Rodné číslo</label>
-                                                                        <input type="text" name="personal_id_num" value="<?= ($row['personal_id_num'] != '') ? $row['personal_id_num'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="personal_id_num" value="<?= ($row['personal_id_num'] != '') ? $row['personal_id_num'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Číslo OP</label>
-                                                                        <input type="text" name="op_num" value="<?= ($row['op_num'] != '') ? $row['op_num'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="op_num" value="<?= ($row['op_num'] != '') ? $row['op_num'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Národnost</label>
-                                                                        <input type="text" name="nationality_id" value="<?= ($row['nationality_id'] != '') ? $row['nationality_id'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="nationality_id" value="<?= ($row['nationality_id'] != '') ? $row['nationality_id'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
-                                                                    <div class="col-md-6 form-group">
+                                                                    <div class="col-md-12 form-group">
                                                                         <label class="control-label">Trvalé bydliště</label>
-                                                                        <input type="text" name="permanent_residence" value="<?= ($row['permanent_residence'] != '') ? $row['permanent_residence'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="permanent_residence" value="<?= ($row['permanent_residence'] != '') ? $row['permanent_residence'] : null ?>" class="form-control" readonly>
                                                                     </div>
-                                                                    <div class="col-md-6 form-group">
+                                                                    <div class="col-md-12 form-group">
                                                                         <label class="control-label">Korespondenční adresa</label>
-                                                                        <input type="text" name="mailing_address" value="<?= ($row['mailing_address'] != '') ? $row['mailing_address'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="mailing_address" value="<?= ($row['mailing_address'] != '') ? $row['mailing_address'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Pracovní pozice</label>
-                                                                        <input type="text" name="job_id" value="<?= ($row['job_id'] != '') ? $template_data['jobs'][$row['job_id']]['name'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="job_id" value="<?= ($row['job_id'] != '') ? $template_data['jobs'][$row['job_id']]['name'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Typ provizního partnera</label>
-                                                                        <input type="text" name="type_of_comm_partner_id" value="<?= ($row['type_of_comm_partner_id'] != '') ? $template_data['type_of_comm_partners'][$row['type_of_comm_partner_id']]['name'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="type_of_comm_partner_id" value="<?= ($row['type_of_comm_partner_id'] != '') ? $template_data['type_of_comm_partners'][$row['type_of_comm_partner_id']]['name'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Přiřazený operátor</label>
-                                                                        <input type="text" name="assigned_operator_id" value="<?= ($row['assigned_operator_id'] != '') ? $template_data['operators'][$row['assigned_operator_id']]['name'].' '.$template_data['operators'][$row['assigned_operator_id']]['surename'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="assigned_operator_id" value="<?= ($row['assigned_operator_id'] != '') ? $template_data['operators'][$row['assigned_operator_id']]['name'].' '.$template_data['operators'][$row['assigned_operator_id']]['surename'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Přiřazený konzultant</label>
-                                                                        <input type="text" name="assigned_seller_id" value="<?= ($row['assigned_seller_id'] != '') ? $template_data['sellers'][$row['assigned_seller_id']]['name'].' '.$template_data['sellers'][$row['assigned_seller_id']]['surename'] : null ?>" class="form-control" disabled>
+                                                                        <input type="text" name="assigned_seller_id" value="<?= ($row['assigned_seller_id'] != '') ? $template_data['sellers'][$row['assigned_seller_id']]['name'].' '.$template_data['sellers'][$row['assigned_seller_id']]['surename'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                             </div>
                                                             </form>
@@ -248,12 +248,12 @@
                                                                     </select>
                                                                 </div>
                                                                 <!-- Text input-->
-                                                                <div class="col-md-6 form-group">
+                                                                <div class="col-md-12 form-group">
                                                                     <label class="control-label">Trvalé bydliště</label>
                                                                     <input type="text" name="permanent_residence" value="<?= ($row['permanent_residence'] != '') ? $row['permanent_residence'] : null ?>" class="form-control">
                                                                 </div>
                                                                 <!-- Text input-->
-                                                                <div class="col-md-6 form-group">
+                                                                <div class="col-md-12 form-group">
                                                                     <label class="control-label">Korespondenční adresa</label>
                                                                     <input type="text" name="mailing_address" value="<?= ($row['mailing_address'] != '') ? $row['mailing_address'] : null ?>" class="form-control">
                                                                 </div>
@@ -450,12 +450,12 @@
                                     </select>
                                 </div>
                                 <!-- Text input-->
-                                <div class="col-md-6 form-group">
+                                <div class="col-md-12 form-group">
                                     <label class="control-label">Trvalé bydliště</label>
                                     <input type="text" name="permanent_residence" value="" class="form-control">
                                 </div>
                                 <!-- Text input-->
-                                <div class="col-md-6 form-group">
+                                <div class="col-md-12 form-group">
                                     <label class="control-label">Korespondenční adresa</label>
                                     <input type="text" name="mailing_address" value="" class="form-control">
                                 </div>
