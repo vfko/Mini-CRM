@@ -40,12 +40,13 @@ class PersonalistikaController extends Controller {
         $this->setRelateTo();
         $this->setTypeOfEmploymentContract();
         $this->setResignationPeriod();
-        $this->addTemplateData('languages', $this->model->getFormatedRows(TABLE_LANGUAGE));
-        $this->addTemplateData('jobs', $this->model->getFormatedRows(TABLE_JOB));
-        $this->addTemplateData('sex', $this->model->getFormatedRows(TABLE_SEX));
-        $this->addTemplateData('martial_status', $this->model->getFormatedRows(TABLE_MARTIAL_STATUS));
-        $this->addTemplateData('nationality', $this->model->getFormatedRows(TABLE_NATIONALITY));
-        $this->addTemplateData('kind_of_collaboration', $this->model->getFormatedRows(TABLE_KIND_OF_COLLABORATION));
+        $this->setLanguages();
+        $this->setJobs();
+        $this->setSex();
+        $this->setMartialStatus();
+        $this->setNationality();
+        $this->setKindOfCollaboration();
+        $this->setDepartment();
     }
 
     private function setTableRows() {
@@ -71,6 +72,42 @@ class PersonalistikaController extends Controller {
         }
     }
 
+    private function setKindOfCollaboration() {
+        if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
+            $this->addTemplateData('kind_of_collaboration', $this->model->getFormatedRows(TABLE_KIND_OF_COLLABORATION));
+        }
+    }
+
+    private function setNationality() {
+        if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
+            $this->addTemplateData('nationality', $this->model->getFormatedRows(TABLE_NATIONALITY));
+        }
+    }
+
+    private function setMartialStatus() {
+        if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
+            $this->addTemplateData('martial_status', $this->model->getFormatedRows(TABLE_MARTIAL_STATUS));
+        }
+    }
+
+    private function setSex() {
+        if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
+            $this->addTemplateData('sex', $this->model->getFormatedRows(TABLE_SEX));
+        }
+    }
+
+    private function setJobs() {
+        if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
+            $this->addTemplateData('jobs', $this->model->getFormatedRows(TABLE_JOB));
+        }
+    }
+
+    private function setLanguages() {
+        if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
+            $this->addTemplateData('languages', $this->model->getFormatedRows(TABLE_LANGUAGE));
+        }
+    }
+
     private function setTypeOfCommissionPartners() {
         if ($this->controller_parameters[0] == ZAMESTNANCI) {
             $this->addTemplateData('type_of_comm_partners', $this->model->getFormatedRows(TABLE_TYPE_OF_COMMISSION_PARTNER));
@@ -90,7 +127,7 @@ class PersonalistikaController extends Controller {
     }
 
     private function setEmployees() {
-        if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY || $this->controller_parameters[0] == PLATEBNI_UDAJE) {
+        if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY || $this->controller_parameters[0] == PLATEBNI_UDAJE || $this->controller_parameters[0] == PRACOVNI_SMLOUVY) {
             $this->addTemplateData('employees', $this->model->getFormatedRows(TABLE_EMPLOYEE));
         }
     }
@@ -110,6 +147,12 @@ class PersonalistikaController extends Controller {
     private function setResignationPeriod() {
         if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY) {
             $this->addTemplateData('resignation_period', $this->resignation_period);
+        }
+    }
+
+    private function setDepartment() {
+        if ($this->controller_parameters[0] == PRACOVNI_POZICE) {
+            $this->addTemplateData('departments', $this->model->getFormatedRows(TABLE_DEPARTMENT));
         }
     }
 

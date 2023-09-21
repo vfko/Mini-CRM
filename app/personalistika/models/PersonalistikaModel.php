@@ -105,6 +105,9 @@ class PersonalistikaModel extends Model {
         if ($controller_parameter == ZAMESTNANCI) {
             return $this->deleteEmployee($data_to_delete);
         }
+        if ($controller_parameter == PRACOVNI_POZICE) {
+            return $this->deleteJob($data_to_delete);
+        }
         $id = $data_to_delete['id'];
         return $this->deleteTableRow($this->tables[$controller_parameter], ['id'=>$id]);
     }
@@ -113,6 +116,14 @@ class PersonalistikaModel extends Model {
         $id = $data_to_delete['id'];
         $this->deleteTableRow(TABLE_EMPLOYEE, ['id'=>$id]);
         return $this->deleteTableRow(TABLE_EMPLOYEE_PAYMENT, ['employee_id'=>$id]);
+    }
+
+    private function deleteJob(array $data_to_delete) {
+        $id = $data_to_delete['id'];
+        $this->updateTableRow(TABLE_EMPLOYEE, array('job_id'=>$id), array('job_id'=>NULL));
+        $this->updateTableRow(TABLE_TENDER, array('job_id'=>$id), array('job_id'=>NULL));
+        $this->updateTableRow(TABLE_CANDIDATE, array('job_id'=>$id), array('job_id'=>NULL));
+        return $this->deleteTableRow(TABLE_JOB, array('id'=>$id));
     }
 
 
