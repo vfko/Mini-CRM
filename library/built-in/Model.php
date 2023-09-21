@@ -29,7 +29,7 @@ class Model {
 
     public function insertToTable(string $table, array $data_to_insert, bool $not_null=false) {
         if ($not_null == false) {
-            $data_to_insert = $this->formatDataForTable($data_to_insert);
+            $data_to_insert = $this->validateDataForTable($data_to_insert);
         }
         return $this->db->insert($table, $data_to_insert);
     }
@@ -42,7 +42,7 @@ class Model {
             $this->db->where($column, $value, $where_operator, $where_condition);
         }
         if ($not_null == false) {
-            $data_to_update = $this->formatDataForTable($data_to_update);
+            $data_to_update = $this->validateDataForTable($data_to_update);
         }
         return $this->db->update($table, $data_to_update);
     }
@@ -54,14 +54,15 @@ class Model {
         return $this->db->delete($table, $num_of_rows);
     }
 
-    private function formatDataForTable(array $data_to_insert): array {
+    private function validateDataForTable(array $data_to_insert): array {
         $result = array();
         $array_keys = array_keys($data_to_insert);
         foreach ($array_keys as $key) {
-            if ($data_to_insert[$key] == '' || $data_to_insert[$key] == array()) {
+            if (empty($data_to_insert[$key])) {
                 $result[$key] = NULL;
+            } else {
+                $result[$key] = $data_to_insert[$key];
             }
-            $result[$key] = $data_to_insert[$key];
         }
         return $result;
     }
