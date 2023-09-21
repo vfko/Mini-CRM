@@ -13,6 +13,14 @@ class PersonalistikaController extends Controller {
     /** */
 
     private object|bool $model = false;
+    private array $relate_to = array('internal'=>array('key'=>'internal', 'name'=>'Interního zaměstnance'), 'external'=>array('key'=>'external', 'name'=>'Externího zaměstnance'), 'commision_partner'=>array('key'=>'commision_partner', 'name'=>'Provizního partnera'));
+    private array $resignation_period = array(
+        0=>array('days'=>0, 'name'=>'stanovena dohodou'),
+        30=>array('days'=>30, 'name'=>'30 dnů'),
+        60=>array('days'=>60, 'name'=>'60 dnů'),
+        120=>array('days'=>120, 'name'=>'120 dnů')
+
+    );
 
     public function __construct(array $_get_data, array $_post_data, array $controller_parameters) {
         parent::__construct($_get_data, $_post_data, $controller_parameters);
@@ -28,6 +36,10 @@ class PersonalistikaController extends Controller {
         $this->setTypeOfCommissionPartners();
         $this->setAssignedOperators();
         $this->setAssignedSellers();
+        $this->setEmployees();
+        $this->setRelateTo();
+        $this->setTypeOfEmploymentContract();
+        $this->setResignationPeriod();
         $this->addTemplateData('languages', $this->model->getFormatedRows(TABLE_LANGUAGE));
         $this->addTemplateData('jobs', $this->model->getFormatedRows(TABLE_JOB));
         $this->addTemplateData('sex', $this->model->getFormatedRows(TABLE_SEX));
@@ -74,6 +86,30 @@ class PersonalistikaController extends Controller {
     private function setAssignedSellers() {
         if ($this->controller_parameters[0] == ZAMESTNANCI) {
             $this->addTemplateData('sellers', $this->model->getSellers());
+        }
+    }
+
+    private function setEmployees() {
+        if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY || $this->controller_parameters[0] == PLATEBNI_UDAJE) {
+            $this->addTemplateData('employees', $this->model->getFormatedRows(TABLE_EMPLOYEE));
+        }
+    }
+
+    private function setRelateTo() {
+        if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY) {
+            $this->addTemplateData('relate_to', $this->relate_to);
+        }
+    }
+
+    private function setTypeOfEmploymentContract() {
+        if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY) {
+            $this->addTemplateData('type_of_empl_contract', $this->model->getFormatedRows(TABLE_TYPE_OF_EMPL_CONTRACT));
+        }
+    }
+
+    private function setResignationPeriod() {
+        if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY) {
+            $this->addTemplateData('resignation_period', $this->resignation_period);
         }
     }
 

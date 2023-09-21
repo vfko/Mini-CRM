@@ -74,3 +74,10 @@ define('SUCCESSFUL_DELETE_MSG', 'The item has been removed');
   define('ADD', 'add');
   define('UPDATE', 'update');
   define('DELETE', 'delete');
+
+  /**
+   * Relate to
+   */
+  define ('INTERNI_ZAMESTNANEC', 'Interní zaměstnanec');
+  define ('EXTERNI_ZAMESTNANEC', 'Externí zaměstnanec');
+  define ('PROVIZNI_PARTNER', 'Provizní partner');

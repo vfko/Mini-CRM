@@ -68,13 +68,27 @@ class PersonalistikaModel extends Model {
     }
 
     public function addNewData(string $controller_parameter, array $data_to_insert) {
+        if ($controller_parameter == ZAMESTNANCI) {
+            return $this->addEmployee($data_to_insert);
+        }
+
         if ($controller_parameter === VYBEROVE_RIZENI) {
-            unset($data_to_insert['submit']);
-            $data_to_insert['candidate_id'] = $this->formatTendersCandidatesToString($data_to_insert);
-            return $this->insertToTable($this->tables[$controller_parameter], $data_to_insert);
+            return $this->addTender($data_to_insert);
         }
         unset($data_to_insert['submit']);
         return $this->insertToTable($this->tables[$controller_parameter], $data_to_insert);
+    }
+
+    private function addEmployee(array $data_to_insert) {
+        unset($data_to_insert['submit']);
+        $this->insertToTable(TABLE_EMPLOYEE, $data_to_insert);
+        return $this->insertToTable(TABLE_EMPLOYEE_PAYMENT, array('employee_id'=>$this->db->getInsertId()));
+    }
+
+    private function addTender(array $data_to_insert) {
+        unset($data_to_insert['submit']);
+        $data_to_insert['candidate_id'] = $this->formatTendersCandidatesToString($data_to_insert);
+        return $this->insertToTable(TABLE_TENDER, $data_to_insert);
     }
 
     public function updateData(string $controller_parameter, array $data_to_update) {
@@ -88,8 +102,17 @@ class PersonalistikaModel extends Model {
     }
 
     public function deleteData(string $controller_parameter, array $data_to_delete) {
+        if ($controller_parameter == ZAMESTNANCI) {
+            return $this->deleteEmployee($data_to_delete);
+        }
         $id = $data_to_delete['id'];
         return $this->deleteTableRow($this->tables[$controller_parameter], ['id'=>$id]);
+    }
+
+    private function deleteEmployee(array $data_to_delete) {
+        $id = $data_to_delete['id'];
+        $this->deleteTableRow(TABLE_EMPLOYEE, ['id'=>$id]);
+        return $this->deleteTableRow(TABLE_EMPLOYEE_PAYMENT, ['employee_id'=>$id]);
     }
 
 
