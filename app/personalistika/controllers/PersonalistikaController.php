@@ -151,7 +151,7 @@ class PersonalistikaController extends Controller {
     }
 
     private function setDepartment() {
-        if ($this->controller_parameters[0] == PRACOVNI_POZICE) {
+        if ($this->controller_parameters[0] == PRACOVNI_POZICE || $this->controller_parameters[0] == ZAMESTNANCI) {
             $this->addTemplateData('departments', $this->model->getFormatedRows(TABLE_DEPARTMENT));
         }
     }

@@ -162,6 +162,11 @@
                                                                         <label class="control-label">Přiřazený konzultant</label>
                                                                         <input type="text" name="assigned_seller_id" value="<?= ($row['assigned_seller_id'] != '') ? $template_data['sellers'][$row['assigned_seller_id']]['name'].' '.$template_data['sellers'][$row['assigned_seller_id']]['surename'] : null ?>" class="form-control" readonly>
                                                                     </div>
+                                                                    <!-- Text input-->
+                                                                    <div class="col-md-6 form-group">
+                                                                        <label class="control-label">Oddělení</label>
+                                                                        <input type="text" name="department_id" value="<?= ($row['department_id'] != '') ? $template_data['departments'][$row['department_id']]['name'] : null ?>" class="form-control" readonly>
+                                                                    </div>
                                                             </div>
                                                             </form>
                                                         </div>
@@ -330,6 +335,16 @@
                                                                         <?php endforeach ?>
                                                                     </select>
                                                                 </div>
+                                                                <!-- Text input-->
+                                                                <div class="col-md-6 form-group">
+                                                                    <label class="control-label">Oddělení</label>
+                                                                    <select name="department_id" class="form-control">
+                                                                        <option value="">Nepřiřazeno</option>
+                                                                        <?php foreach ($template_data['departments'] as $item): ?>
+                                                                        <option value="<?= $item['id'] ?>" <?= ($item['id'] == $row['department_id']) ? 'selected' : null ?>><?= $item['name'] ?></option>
+                                                                        <?php endforeach ?>
+                                                                    </select>
+                                                                </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -449,7 +464,7 @@
                                 <div class="col-md-6 form-group">
                                     <label class="control-label">Pohlaví</label>
                                     <select name="sex_id" class="form-control">
-                                        <option value="">Nepřiřazen</option>
+                                        <option value="">Nepřiřazeno</option>
                                         <?php foreach ($template_data['sex'] as $item): ?>
                                         <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
                                         <?php endforeach ?>
@@ -484,7 +499,7 @@
                                 <div class="col-md-6 form-group">
                                     <label class="control-label">Národnost</label>
                                     <select name="nationality_id" class="form-control">
-                                        <option value="">Nepřiřazen</option>
+                                        <option value="">Nepřiřazena</option>
                                         <?php foreach ($template_data['nationality'] as $item): ?>
                                         <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
                                         <?php endforeach ?>
@@ -504,7 +519,7 @@
                                 <div class="col-md-6 form-group">
                                     <label class="control-label">Pracovní pozice</label>
                                     <select name="job_id" class="form-control">
-                                        <option value="">Nepřiřazen</option>
+                                        <option value="">Nepřiřazena</option>
                                         <?php foreach ($template_data['jobs'] as $item): ?>
                                         <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
                                         <?php endforeach ?>
@@ -536,6 +551,16 @@
                                     <select name="assigned_seller_id" class="form-control">
                                         <option value="">Nepřiřazen</option>
                                         <?php foreach ($template_data['sellers'] as $item): ?>
+                                        <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
+                                <!-- Text input-->
+                                <div class="col-md-6 form-group">
+                                    <label class="control-label">Oddělení</label>
+                                    <select name="department_id" class="form-control">
+                                        <option value="">Nepřiřazeno</option>
+                                        <?php foreach ($template_data['departments'] as $item): ?>
                                         <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
                                         <?php endforeach ?>
                                     </select>
