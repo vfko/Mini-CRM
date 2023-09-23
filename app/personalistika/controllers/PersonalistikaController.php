@@ -74,43 +74,43 @@ class PersonalistikaController extends Controller {
 
     private function setKindOfCollaboration() {
         if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
-            $this->addTemplateData('kind_of_collaboration', $this->model->getFormatedRows(TABLE_KIND_OF_COLLABORATION));
+            $this->addTemplateData('kind_of_collaboration', $this->model->getTableRows(TABLE_KIND_OF_COLLABORATION));
         }
     }
 
     private function setNationality() {
         if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
-            $this->addTemplateData('nationality', $this->model->getFormatedRows(TABLE_NATIONALITY));
+            $this->addTemplateData('nationality', $this->model->getTableRows(TABLE_NATIONALITY));
         }
     }
 
     private function setMartialStatus() {
         if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
-            $this->addTemplateData('martial_status', $this->model->getFormatedRows(TABLE_MARTIAL_STATUS));
+            $this->addTemplateData('martial_status', $this->model->getTableRows(TABLE_MARTIAL_STATUS));
         }
     }
 
     private function setSex() {
         if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
-            $this->addTemplateData('sex', $this->model->getFormatedRows(TABLE_SEX));
+            $this->addTemplateData('sex', $this->model->getTableRows(TABLE_SEX));
         }
     }
 
     private function setJobs() {
-        if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
-            $this->addTemplateData('jobs', $this->model->getFormatedRows(TABLE_JOB));
+        if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI || $this->controller_parameters[0] == VYBEROVE_RIZENI) {
+            $this->addTemplateData('jobs', $this->model->getTableRows(TABLE_JOB));
         }
     }
 
     private function setLanguages() {
         if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
-            $this->addTemplateData('languages', $this->model->getFormatedRows(TABLE_LANGUAGE));
+            $this->addTemplateData('languages', $this->model->getTableRows(TABLE_LANGUAGE));
         }
     }
 
     private function setTypeOfCommissionPartners() {
         if ($this->controller_parameters[0] == ZAMESTNANCI) {
-            $this->addTemplateData('type_of_comm_partners', $this->model->getFormatedRows(TABLE_TYPE_OF_COMMISSION_PARTNER));
+            $this->addTemplateData('type_of_comm_partners', $this->model->getTableRows(TABLE_TYPE_OF_COMMISSION_PARTNER));
         }
     }
 
@@ -128,7 +128,7 @@ class PersonalistikaController extends Controller {
 
     private function setEmployees() {
         if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY || $this->controller_parameters[0] == PLATEBNI_UDAJE || $this->controller_parameters[0] == PRACOVNI_SMLOUVY) {
-            $this->addTemplateData('employees', $this->model->getFormatedRows(TABLE_EMPLOYEE));
+            $this->addTemplateData('employees', $this->model->getTableRows(TABLE_EMPLOYEE));
         }
     }
 
@@ -140,7 +140,7 @@ class PersonalistikaController extends Controller {
 
     private function setTypeOfEmploymentContract() {
         if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY) {
-            $this->addTemplateData('type_of_empl_contract', $this->model->getFormatedRows(TABLE_TYPE_OF_EMPL_CONTRACT));
+            $this->addTemplateData('type_of_empl_contract', $this->model->getTableRows(TABLE_TYPE_OF_EMPL_CONTRACT));
         }
     }
 
@@ -152,7 +152,7 @@ class PersonalistikaController extends Controller {
 
     private function setDepartment() {
         if ($this->controller_parameters[0] == PRACOVNI_POZICE || $this->controller_parameters[0] == ZAMESTNANCI) {
-            $this->addTemplateData('departments', $this->model->getFormatedRows(TABLE_DEPARTMENT));
+            $this->addTemplateData('departments', $this->model->getTableRows(TABLE_DEPARTMENT));
         }
     }
 

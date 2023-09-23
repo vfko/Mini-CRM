@@ -17,30 +17,27 @@ class PersonalistikaModel extends Model {
         parent::__construct();
     }
 
-    public function getRows(string $controller_parameter, bool $sort_by_ids = false) {
+    public function getRows(string $controller_parameter) {
 
         if ($controller_parameter === VYBEROVE_RIZENI) {
             return $this->getTenders($this->getTableData($this->tables[$controller_parameter]));
         }
 
         if ($controller_parameter === ZAMESTNANCI) {
-            $this->employees = $this->sortTableRowsById($this->getTableData(TABLE_EMPLOYEE));
+            $this->employees = $this->getTableData(TABLE_EMPLOYEE);
             return $this->employees;
         }
 
-        if ($sort_by_ids) {
-            return $this->sortTableRowsById($this->getTableData($this->tables[$controller_parameter]));
-        }
         return $this->getTableData($this->tables[$controller_parameter]);
     }
 
-    public function getFormatedRows(string $table) {
-        return $this->sortTableRowsById($this->getTableData($table));
+    public function getTableRows(string $table) {
+        return $this->getTableData($table);
     }
 
     public function getOperators() {
         $result = array();
-        $operators = $this->sortTableRowsById($this->getTableData(TABLE_OPERATOR));
+        $operators = $this->getTableData(TABLE_OPERATOR);
         foreach ($operators as $operator) {
             $result[$operator['id']] = $this->employees[$operator['id']];
         }
@@ -49,7 +46,7 @@ class PersonalistikaModel extends Model {
 
     public function getSellers() {
         $result = array();
-        $sellers = $this->sortTableRowsById($this->getTableData(TABLE_SELLER));
+        $sellers = $this->getTableData(TABLE_SELLER);
         foreach ($sellers as $seller) {
             $result[$seller['id']] = $this->employees[$seller['id']];
         }
@@ -58,7 +55,7 @@ class PersonalistikaModel extends Model {
 
     private function getTenders(array $tender_table_rows) {
         $result = array();
-        $candidates = $this->sortTableRowsById($this->getTableData(TABLE_CANDIDATE, 'id, name, surename'));
+        $candidates = $this->getTableData(TABLE_CANDIDATE, 'id, name, surename');
         foreach ($tender_table_rows as $row) {
             $row['candidate_id'] = $this->formatTendersCandidatesToArray($row['candidate_id']);
             $row['candidates'] = $candidates;
@@ -124,18 +121,6 @@ class PersonalistikaModel extends Model {
         $this->updateTableRow(TABLE_TENDER, array('job_id'=>$id), array('job_id'=>NULL));
         $this->updateTableRow(TABLE_CANDIDATE, array('job_id'=>$id), array('job_id'=>NULL));
         return $this->deleteTableRow(TABLE_JOB, array('id'=>$id));
-    }
-
-
-    /**
-     * @return array    array('row_id' => array(row_data))
-     */
-    private function sortTableRowsById(array $table_rows): array {
-        $result = array();
-        foreach ($table_rows as $row) {
-            $result[$row['id']] = $row;
-        }
-        return $result;
     }
 
     private function formatTendersCandidatesToArray(string $tender_candidates): array {
