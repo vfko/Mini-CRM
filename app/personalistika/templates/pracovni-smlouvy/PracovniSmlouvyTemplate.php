@@ -37,7 +37,7 @@
                                             <td><?= (!empty($row['relate_to'])) ? $template_data['relate_to'][$row['relate_to']]['name'] : null ?></td>
                                             <td><?= (!empty($row['employee_id'])) ? $template_data['employees'][$row['employee_id']]['name'].' '.$template_data['employees'][$row['employee_id']]['surename'] : null ?></td>
                                             <td><?= $row['contract_number'] ?></td>
-                                            <td><?= (!empty($row['contract_type_id'])) ? $template_data['type_of_empl_contract'][$row['contract_type_id']]['name'] : null ?></td>
+                                            <td><?= (!empty($row['type_of_empl_contract_id'])) ? $template_data['type_of_empl_contract'][$row['type_of_empl_contract_id']]['name'] : null ?></td>
                                             <td><?= $row['contract_name'] ?></td>
                                             <td><?= (!empty($row['start_date'])) ? date('d.m.Y', strtotime($row['start_date'])) : null ?></td>
                                             <td><?= (!empty($row['end_date'])) ? date('d.m.Y', strtotime($row['end_date'])) : null ?></td>
@@ -80,7 +80,7 @@
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Typ smlouvy</label>
-                                                                        <input type="text" name="contract_type_id" value="<?= (!empty($row['contract_type_id'])) ? $template_data['type_of_empl_contract'][$row['contract_type_id']]['name'] : null ?>" class="form-control" readonly>
+                                                                        <input type="text" name="type_of_empl_contract_id" value="<?= (!empty($row['type_of_empl_contract_id'])) ? $template_data['type_of_empl_contract'][$row['type_of_empl_contract_id']]['name'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
@@ -165,9 +165,9 @@
                                                             <!-- Text input-->
                                                             <div class="col-md-6 form-group">
                                                                 <label class="control-label">Typ smlouvy</label>
-                                                                <select name="contract_type_id" class="form-control">
+                                                                <select name="type_of_empl_contract_id" class="form-control">
                                                                     <?php foreach ($template_data['type_of_empl_contract'] as $empl_contract): ?>
-                                                                        <option value="<?= $empl_contract['id'] ?>" <?= ($row['contract_type_id'] == $empl_contract['id']) ? 'selected' : null ?>><?= $empl_contract['name'] ?></option>
+                                                                        <option value="<?= $empl_contract['id'] ?>" <?= ($row['type_of_empl_contract_id'] == $empl_contract['id']) ? 'selected' : null ?>><?= $empl_contract['name'] ?></option>
                                                                     <?php endforeach ?>
                                                                 </select>
                                                             </div>
@@ -303,7 +303,7 @@
                                 <!-- Text input-->
                                 <div class="col-md-6 form-group">
                                     <label class="control-label">Typ smlouvy</label>
-                                    <select name="contract_type_id" class="form-control">
+                                    <select name="type_of_empl_contract_id" class="form-control">
                                         <?php foreach ($template_data['type_of_empl_contract'] as $empl_contract): ?>
                                             <option value="<?= $empl_contract['id'] ?>"><?= $empl_contract['name'] ?></option>
                                         <?php endforeach ?>

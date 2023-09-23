@@ -278,7 +278,7 @@ CREATE TABLE `employment_contract` (
   `id` int(11) NOT NULL,
   `employee_id` int(11) NOT NULL,
   `contract_number` varchar(255) NOT NULL,
-  `contract_type_id` int(11) NOT NULL,
+  `type_of_empl_contract_id` int(11) NOT NULL,
   `contract_name` varchar(255) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
