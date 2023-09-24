@@ -37,18 +37,20 @@ class PersonalistikaModel extends Model {
 
     public function getOperators() {
         $result = array();
-        $operators = $this->getTableData(TABLE_OPERATOR);
-        foreach ($operators as $operator) {
-            $result[$operator['id']] = $this->employees[$operator['id']];
+        foreach ($this->employees as $employee) {
+            if ($employee['job_id'] == OPERATOR_ID) {
+                $result[$employee['id']] = $employee;
+            }
         }
         return $result;
     }
 
     public function getSellers() {
         $result = array();
-        $sellers = $this->getTableData(TABLE_SELLER);
-        foreach ($sellers as $seller) {
-            $result[$seller['id']] = $this->employees[$seller['id']];
+        foreach ($this->employees as $employee) {
+            if ($employee['job_id'] == SELLER_ID || $employee['job_id'] == SALES_MANAGER_ID) {
+                $result[$employee['id']] = $employee;
+            }
         }
         return $result;
     }
@@ -79,6 +81,8 @@ class PersonalistikaModel extends Model {
     private function addEmployee(array $data_to_insert) {
         unset($data_to_insert['submit']);
         $this->insertToTable(TABLE_EMPLOYEE, $data_to_insert);
+        $employee_id = $this->db->getInsertId();
+        $this->insertToTable(TABLE_SELLER, array('employee_id'=>$employee_id));
         return $this->insertToTable(TABLE_EMPLOYEE_PAYMENT, array('employee_id'=>$this->db->getInsertId()));
     }
 

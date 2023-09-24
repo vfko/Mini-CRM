@@ -127,14 +127,14 @@ class PersonalistikaController extends Controller {
     }
 
     private function setEmployees() {
-        if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY || $this->controller_parameters[0] == PLATEBNI_UDAJE || $this->controller_parameters[0] == PRACOVNI_SMLOUVY) {
+        if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY || $this->controller_parameters[0] == PLATEBNI_UDAJE || $this->controller_parameters[0] == PRACOVNI_SMLOUVY || $this->controller_parameters[0] == ZAMESTNANCI) {
             $this->addTemplateData('employees', $this->model->getTableRows(TABLE_EMPLOYEE));
         }
     }
 
     private function setRelateTo() {
-        if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY) {
-            $this->addTemplateData('relate_to', $this->relate_to);
+        if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY || $this->controller_parameters[0] == ZAMESTNANCI) {
+            $this->addTemplateData('relate_to', $this->model->getTableRows(TABLE_RELATE_TO));
         }
     }
 

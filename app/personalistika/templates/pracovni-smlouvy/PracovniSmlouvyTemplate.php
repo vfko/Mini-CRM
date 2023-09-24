@@ -34,7 +34,7 @@
                                     <?php foreach ($template_data['rows'] as $row): ?>
                                     <tbody>
                                         <tr>
-                                            <td><?= (!empty($row['relate_to'])) ? $template_data['relate_to'][$row['relate_to']]['name'] : null ?></td>
+                                            <td><?= (!empty($template_data['employees'][$row['employee_id']]['relate_to_id'])) ? $template_data['relate_to'][$template_data['employees'][$row['employee_id']]['relate_to_id']]['name'] : null ?></td>
                                             <td><?= (!empty($row['employee_id'])) ? $template_data['employees'][$row['employee_id']]['name'].' '.$template_data['employees'][$row['employee_id']]['surename'] : null ?></td>
                                             <td><?= $row['contract_number'] ?></td>
                                             <td><?= (!empty($row['type_of_empl_contract_id'])) ? $template_data['type_of_empl_contract'][$row['type_of_empl_contract_id']]['name'] : null ?></td>
@@ -65,7 +65,7 @@
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Týká se</label>
-                                                                        <input type="text" name="relate_to" value="<?= (!empty($row['relate_to'])) ? $template_data['relate_to'][$row['relate_to']]['name'] : null ?>" class="form-control" readonly>
+                                                                        <input type="text" name="relate_to" value="<?= (!empty($template_data['employees'][$row['employee_id']]['relate_to_id'])) ? $template_data['relate_to'][$template_data['employees'][$row['employee_id']]['relate_to_id']]['name'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
@@ -144,7 +144,7 @@
                                                                 <label class="control-label">Týká se</label>
                                                                 <select name="relate_to" class="form-control">
                                                                     <?php foreach ($template_data['relate_to'] as $relate_to): ?>
-                                                                        <option value="<?= $relate_to['key'] ?>" <?= ($row['relate_to'] == $relate_to['key']) ? 'selected' : null ?>><?= $relate_to['name'] ?></option>
+                                                                        <option value="<?= $relate_to['key'] ?>" <?= ($row['relate_to_id'] == $relate_to['key']) ? 'selected' : null ?>><?= $relate_to['name'] ?></option>
                                                                     <?php endforeach ?>
                                                                 </select>
                                                             </div>

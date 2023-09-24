@@ -28,6 +28,7 @@
                                         <th>Tel</th>
                                         <th>email</th>
                                         <th>Pracovní pozice</th>
+                                        <th>Druh spolupráce</th>
                                         <th>Akce</th>
                                     </tr>
                                     </thead>
@@ -41,6 +42,7 @@
                                             <td><?= $row['tel'] ?></td>
                                             <td><?= $row['work_email'] ?></td>
                                             <td><?= ($row['job_id'] != '') ? $template_data['jobs'][$row['job_id']]['name'] : null ?></td>
+                                            <td> <?= ($row['relate_to_id'] != '') ? $template_data['relate_to'][$row['relate_to_id']]['name'] : null ?></td>
                                             <td>
                                                 <button type="button" class="btn btn-add btn-sm" data-toggle="modal" data-target="#info-<?= $row['id'] ?>">&nbsp<i class="fa fa-info"></i>&nbsp</button>
                                                 <button type="button" class="btn btn-add btn-sm" data-toggle="modal" data-target="#update-<?= $row['id'] ?>"><i class="fa fa-pencil"></i></button>
@@ -155,17 +157,22 @@
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Přiřazený operátor</label>
-                                                                        <input type="text" name="assigned_operator_id" value="<?= ($row['assigned_operator_id'] != '') ? $template_data['operators'][$row['assigned_operator_id']]['name'].' '.$template_data['operators'][$row['assigned_operator_id']]['surename'] : null ?>" class="form-control" readonly>
+                                                                        <input type="text" name="assigned_operator_id" value="<?= ($row['assigned_operator_id'] != '') ? $template_data['employees'][$row['assigned_operator_id']]['name'].' '.$template_data['employees'][$row['assigned_operator_id']]['surename'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Přiřazený konzultant</label>
-                                                                        <input type="text" name="assigned_seller_id" value="<?= ($row['assigned_seller_id'] != '') ? $template_data['sellers'][$row['assigned_seller_id']]['name'].' '.$template_data['sellers'][$row['assigned_seller_id']]['surename'] : null ?>" class="form-control" readonly>
+                                                                        <input type="text" name="assigned_seller_id" value="<?= ($row['assigned_seller_id'] != '') ? $template_data['employees'][$row['assigned_seller_id']]['name'].' '.$template_data['employees'][$row['assigned_seller_id']]['surename'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Oddělení</label>
                                                                         <input type="text" name="department_id" value="<?= ($row['department_id'] != '') ? $template_data['departments'][$row['department_id']]['name'] : null ?>" class="form-control" readonly>
+                                                                    </div>
+                                                                    <!-- Text input-->
+                                                                    <div class="col-md-6 form-group">
+                                                                        <label class="control-label">Druh spolpráce</label>
+                                                                        <input type="text" name="relate_to_id" value="<?= ($row['relate_to_id'] != '') ? $template_data['relate_to'][$row['relate_to_id']]['name'] : null ?>" class="form-control" readonly>
                                                                     </div>
                                                             </div>
                                                             </form>
@@ -219,16 +226,6 @@
                                                                 <div class="col-md-6 form-group">
                                                                     <label class="control-label">Soukromý tel.</label>
                                                                     <input type="text" name="tel" value="<?= ($row['tel'] != '') ? $row['tel'] : null ?>" class="form-control">
-                                                                </div>
-                                                                <!-- Text input-->
-                                                                <div class="col-md-6 form-group">
-                                                                    <label class="control-label">Druh spolupráce</label>
-                                                                    <select name="kind_of_collab_id" class="form-control">
-                                                                        <option value="">Nepřiřazen</option>
-                                                                        <?php foreach ($template_data['kind_of_collaboration'] as $item): ?>
-                                                                        <option value="<?= $item['id'] ?>" <?= ($item['id'] == $row['kind_of_collab_id']) ? 'selected' : null ?>><?= $item['name'] ?></option>
-                                                                        <?php endforeach ?>
-                                                                    </select>
                                                                 </div>
                                                                 <!-- Text input-->
                                                                 <div class="col-md-6 form-group">
@@ -286,6 +283,16 @@
                                                                     </select>
                                                                 </div>
                                                                 <!-- Text input-->
+                                                                <div class="col-md-6 form-group">
+                                                                    <label class="control-label">Druh spolupráce</label>
+                                                                    <select name="relate_to_id" class="form-control">
+                                                                        <option value="">Nepřiřazeno</option>
+                                                                        <?php foreach ($template_data['relate_to'] as $item): ?>
+                                                                        <option value="<?= $item['id'] ?>" <?= ($item['id'] == $row['relate_to_id']) ? 'selected' : null ?>><?= $item['name'] ?></option>
+                                                                        <?php endforeach ?>
+                                                                    </select>
+                                                                </div>
+                                                                <!-- Text input-->
                                                                 <div class="col-md-12 form-group">
                                                                     <label class="control-label">Trvalé bydliště</label>
                                                                     <input type="text" name="permanent_residence" value="<?= ($row['permanent_residence'] != '') ? $row['permanent_residence'] : null ?>" class="form-control">
@@ -321,7 +328,7 @@
                                                                     <select name="assigned_operator_id" class="form-control">
                                                                         <option value="">Nepřiřazen</option>
                                                                         <?php foreach ($template_data['operators'] as $item): ?>
-                                                                        <option value="<?= $item['id'] ?>" <?= ($item['id'] == $row['assigned_operator_id']) ? 'selected' : null ?>><?= $item['name'] ?></option>
+                                                                        <option value="<?= $item['id'] ?>" <?= ($item['id'] == $row['assigned_operator_id']) ? 'selected' : null ?>><?= $template_data['employees'][$item['id']]['name'].' '.$template_data['employees'][$item['id']]['surename'] ?></option>
                                                                         <?php endforeach ?>
                                                                     </select>
                                                                 </div>
@@ -331,7 +338,7 @@
                                                                     <select name="assigned_seller_id" class="form-control">
                                                                         <option value="">Nepřiřazen</option>
                                                                         <?php foreach ($template_data['sellers'] as $item): ?>
-                                                                        <option value="<?= $item['id'] ?>" <?= ($item['id'] == $row['assigned_seller_id']) ? 'selected' : null ?>><?= $item['name'] ?></option>
+                                                                        <option value="<?= $item['id'] ?>" <?= ($item['id'] == $row['assigned_seller_id']) ? 'selected' : null ?>><?= $template_data['employees'][$item['id']]['name'].' '.$template_data['employees'][$item['id']]['surename'] ?></option>
                                                                         <?php endforeach ?>
                                                                     </select>
                                                                 </div>
@@ -451,15 +458,6 @@
                                     <label class="control-label">Soukromý email</label>
                                     <input type="text" name="email" value="" class="form-control">
                                 </div>
-                                <div class="col-md-6 form-group">
-                                    <label class="control-label">Druh spolupráce</label>
-                                    <select name="kind_of_collab_id" class="form-control">
-                                        <option value="">Nepřiřazen</option>
-                                        <?php foreach ($template_data['kind_of_collaboration'] as $item): ?>
-                                        <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
-                                        <?php endforeach ?>
-                                    </select>
-                                </div>
                                 <!-- Text input-->
                                 <div class="col-md-6 form-group">
                                     <label class="control-label">Pohlaví</label>
@@ -501,6 +499,16 @@
                                     <select name="nationality_id" class="form-control">
                                         <option value="">Nepřiřazena</option>
                                         <?php foreach ($template_data['nationality'] as $item): ?>
+                                        <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
+                                <!-- Text input-->
+                                <div class="col-md-6 form-group">
+                                    <label class="control-label">Druh spolupráce</label>
+                                    <select name="relate_to_id" class="form-control">
+                                        <option value="">Nepřiřazeno</option>
+                                        <?php foreach ($template_data['relate_to'] as $item): ?>
                                         <option value="<?= $item['id'] ?>"><?= $item['name'] ?></option>
                                         <?php endforeach ?>
                                     </select>

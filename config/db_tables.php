@@ -30,3 +30,4 @@ define('TABLE_TENDER', 'tender');
 define('TABLE_JOB', 'job');
 define('TABLE_OPERATOR', 'operator');
 define('TABLE_SELLER', 'seller');
+define('TABLE_RELATE_TO', 'relate_to');

@@ -76,8 +76,10 @@ define('SUCCESSFUL_DELETE_MSG', 'The item has been removed');
   define('DELETE', 'delete');
 
   /**
-   * Relate to
+   * Jobs ID
    */
-  define ('INTERNI_ZAMESTNANEC', 'Interní zaměstnanec');
-  define ('EXTERNI_ZAMESTNANEC', 'Externí zaměstnanec');
-  define ('PROVIZNI_PARTNER', 'Provizní partner');
+  define('COMMISSION_PARTNER_ID', 1);
+  define('SALES_MANAGER_ID', 2);
+  define('SELLER_ID', 3);
+  define('OPERATOR_ID', 4);
+  define('CEO_ID', 5);

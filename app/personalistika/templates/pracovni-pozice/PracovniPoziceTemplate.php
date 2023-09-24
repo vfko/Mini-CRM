@@ -10,11 +10,7 @@
 
 
                     <div class="card-body">
-                            <!-- Add button -->
-                            <div class="btn-group">
-                                <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#add-item" style="background: #009688;">Přidat pracovní pozici</button>
-                            </div>
-
+                            
                             <!-- Table -->
                             <div class="table-responsive">
                                 <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
@@ -36,7 +32,6 @@
                                         <td><?= $template_data['departments'][$row['department_id']]['name'] ?></td>
                                         <td>
                                             <button type="button" class="btn btn-add btn-sm" data-toggle="modal" data-target="#update-<?= $row['id'] ?>"><i class="fa fa-pencil"></i></button>
-                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete-<?= $row['id'] ?>"><i class="fa fa-trash-o"></i> </button>
                                         </td>
                                     </tr>
 
@@ -56,13 +51,9 @@
                                                         <div class="row">
                                                                 <!-- Text input-->
                                                                 <div class="col-md-6 form-group">
-                                                                    <label class="control-label">Název pracovní pozice</label>
-                                                                    <input type="text" name="name" placeholder="" value="<?= $row['name'] ?>" class="form-control">
-                                                                </div>
-                                                                <!-- Text input-->
-                                                                <div class="col-md-6 form-group">
                                                                     <label class="control-label">Oddělení</label>
                                                                     <select name="department_id" class="form-control">
+                                                                        <option value="">Nepřiřazeno</option>
                                                                         <?php foreach ($template_data['departments'] as $department): ?>
                                                                             <option value="<?= $department['id'] ?>" <?= ($department['id'] == $row['department_id']) ? 'selected' : null ?>><?= $department['name'] ?></option>
                                                                         <?php endforeach ?>
