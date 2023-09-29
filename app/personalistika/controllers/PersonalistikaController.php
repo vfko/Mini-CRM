@@ -50,107 +50,107 @@ class PersonalistikaController extends Controller {
 
     private function setTableRows() {
         switch ($this->controller_parameters[0]) {
-            case UCHAZECI:
+            case CONTROLLER_PARAM_CANDIDATE:
                 $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
                 break;
-            case ZAMESTNANCI:
+            case CONTROLLER_PARAM_EMPLOYEES:
                 $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
                 break;
-            case PLATEBNI_UDAJE:
+            case CONTROLLER_PARAM_EMPL_PAYMENT:
                 $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
                 break;
-            case PRACOVNI_SMLOUVY:
+            case CONTROLLER_PARAM_EMPL_CONTRACT:
                 $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
                 break;
-            case VYBEROVE_RIZENI:
+            case CONTROLLER_PARAM_TENDER:
                 $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
                 break;
-            case PRACOVNI_POZICE:
+            case CONTROLLER_PARAM_JOBS:
                 $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
                 break;
         }
     }
 
     private function setKindOfCollaboration() {
-        if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES || $this->controller_parameters[0] == CONTROLLER_PARAM_CANDIDATE) {
             $this->addTemplateData('kind_of_collaboration', $this->model->getTableRows(TABLE_KIND_OF_COLLABORATION));
         }
     }
 
     private function setNationality() {
-        if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES || $this->controller_parameters[0] == CONTROLLER_PARAM_CANDIDATE) {
             $this->addTemplateData('nationality', $this->model->getTableRows(TABLE_NATIONALITY));
         }
     }
 
     private function setMartialStatus() {
-        if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES || $this->controller_parameters[0] == CONTROLLER_PARAM_CANDIDATE) {
             $this->addTemplateData('martial_status', $this->model->getTableRows(TABLE_MARTIAL_STATUS));
         }
     }
 
     private function setSex() {
-        if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES || $this->controller_parameters[0] == CONTROLLER_PARAM_CANDIDATE) {
             $this->addTemplateData('sex', $this->model->getTableRows(TABLE_SEX));
         }
     }
 
     private function setJobs() {
-        if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI || $this->controller_parameters[0] == VYBEROVE_RIZENI) {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES || $this->controller_parameters[0] == CONTROLLER_PARAM_CANDIDATE || $this->controller_parameters[0] == CONTROLLER_PARAM_TENDER) {
             $this->addTemplateData('jobs', $this->model->getTableRows(TABLE_JOB));
         }
     }
 
     private function setLanguages() {
-        if ($this->controller_parameters[0] == ZAMESTNANCI || $this->controller_parameters[0] == UCHAZECI) {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES || $this->controller_parameters[0] == CONTROLLER_PARAM_CANDIDATE) {
             $this->addTemplateData('languages', $this->model->getTableRows(TABLE_LANGUAGE));
         }
     }
 
     private function setTypeOfCommissionPartners() {
-        if ($this->controller_parameters[0] == ZAMESTNANCI) {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES) {
             $this->addTemplateData('type_of_comm_partners', $this->model->getTableRows(TABLE_TYPE_OF_COMMISSION_PARTNER));
         }
     }
 
     private function setAssignedOperators() {
-        if ($this->controller_parameters[0] == ZAMESTNANCI) {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES) {
             $this->addTemplateData('operators', $this->model->getOperators());
         }
     }
 
     private function setAssignedSellers() {
-        if ($this->controller_parameters[0] == ZAMESTNANCI) {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES) {
             $this->addTemplateData('sellers', $this->model->getSellers());
         }
     }
 
     private function setEmployees() {
-        if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY || $this->controller_parameters[0] == PLATEBNI_UDAJE || $this->controller_parameters[0] == PRACOVNI_SMLOUVY || $this->controller_parameters[0] == ZAMESTNANCI) {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPL_CONTRACT || $this->controller_parameters[0] == CONTROLLER_PARAM_EMPL_PAYMENT || $this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES) {
             $this->addTemplateData('employees', $this->model->getTableRows(TABLE_EMPLOYEE));
         }
     }
 
     private function setRelateTo() {
-        if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY || $this->controller_parameters[0] == ZAMESTNANCI) {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPL_CONTRACT || $this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES) {
             $this->addTemplateData('relate_to', $this->model->getTableRows(TABLE_RELATE_TO));
         }
     }
 
     private function setTypeOfEmploymentContract() {
-        if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY) {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPL_CONTRACT) {
             $this->addTemplateData('type_of_empl_contract', $this->model->getTableRows(TABLE_TYPE_OF_EMPL_CONTRACT));
         }
     }
 
     private function setResignationPeriod() {
-        if ($this->controller_parameters[0] == PRACOVNI_SMLOUVY) {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPL_CONTRACT) {
             $this->addTemplateData('resignation_period', $this->resignation_period);
         }
     }
 
     private function setDepartment() {
-        if ($this->controller_parameters[0] == PRACOVNI_POZICE || $this->controller_parameters[0] == ZAMESTNANCI) {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_JOBS || $this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES) {
             $this->addTemplateData('departments', $this->model->getTableRows(TABLE_DEPARTMENT));
         }
     }

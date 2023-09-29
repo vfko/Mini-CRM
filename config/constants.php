@@ -51,22 +51,22 @@ define('SUCCESSFUL_DELETE_MSG', 'The item has been removed');
  include 'config/db_tables.php';
 
  /**
-  * Administration URL parameters
+  * Administration controller parameters
   */
-  define('PERSONALISTIKA', 'personalistika');
-  define('OBCHOD', 'obchod');
-  define('DOPRAVA', 'doprava');
-  define('REFERENCE', 'reference');
+  define('CONTROLLER_PARAM_HR', 'personalistika');
+  define('CONTROLLER_PARAM_TRADE', 'obchod');
+  define('CONTROLLER_PARAM_DELIVERY', 'doprava');
+  define('CONTROLLER_PARAM_REFERENCE', 'reference');
 
   /**
-   * Personalistika URL parameters
+   * Personalistika controller parameters
    */
-  define('UCHAZECI', 'uchazeci');
-  define('ZAMESTNANCI', 'zamestnanci');
-  define('PLATEBNI_UDAJE', 'platebni-udaje');
-  define('PRACOVNI_SMLOUVY', 'pracovni-smlouvy'); 
-  define('VYBEROVE_RIZENI', 'vyberove-rizeni');
-  define('PRACOVNI_POZICE', 'pracovni-pozice');
+  define('CONTROLLER_PARAM_CANDIDATE', 'uchazeci');
+  define('CONTROLLER_PARAM_EMPLOYEES', 'zamestnanci');
+  define('CONTROLLER_PARAM_EMPL_PAYMENT', 'platebni-udaje');
+  define('CONTROLLER_PARAM_EMPL_CONTRACT', 'pracovni-smlouvy'); 
+  define('CONTROLLER_PARAM_TENDER', 'vyberove-rizeni');
+  define('CONTROLLER_PARAM_JOBS', 'pracovni-pozice');
   
   /**
    * Form action

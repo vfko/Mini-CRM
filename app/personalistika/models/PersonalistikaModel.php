@@ -3,12 +3,12 @@
 class PersonalistikaModel extends Model {
 
     private array $tables = array(
-        UCHAZECI => TABLE_CANDIDATE,
-        ZAMESTNANCI => TABLE_EMPLOYEE,
-        PLATEBNI_UDAJE => TABLE_EMPLOYEE_PAYMENT,
-        PRACOVNI_SMLOUVY => TABLE_EMPLOYMENT_CONTRACT,
-        VYBEROVE_RIZENI => TABLE_TENDER,
-        PRACOVNI_POZICE => TABLE_JOB
+        CONTROLLER_PARAM_CANDIDATE => TABLE_CANDIDATE,
+        CONTROLLER_PARAM_EMPLOYEES => TABLE_EMPLOYEE,
+        CONTROLLER_PARAM_EMPL_PAYMENT => TABLE_EMPLOYEE_PAYMENT,
+        CONTROLLER_PARAM_EMPL_CONTRACT => TABLE_EMPLOYMENT_CONTRACT,
+        CONTROLLER_PARAM_TENDER => TABLE_TENDER,
+        CONTROLLER_PARAM_JOBS => TABLE_JOB
     );
 
     private array $employees = array();
@@ -19,11 +19,11 @@ class PersonalistikaModel extends Model {
 
     public function getRows(string $controller_parameter) {
 
-        if ($controller_parameter === VYBEROVE_RIZENI) {
+        if ($controller_parameter === CONTROLLER_PARAM_TENDER) {
             return $this->getTenders($this->getTableData($this->tables[$controller_parameter]));
         }
 
-        if ($controller_parameter === ZAMESTNANCI) {
+        if ($controller_parameter === CONTROLLER_PARAM_EMPLOYEES) {
             $this->employees = $this->getTableData(TABLE_EMPLOYEE);
             return $this->employees;
         }
@@ -67,11 +67,11 @@ class PersonalistikaModel extends Model {
     }
 
     public function addNewData(string $controller_parameter, array $data_to_insert) {
-        if ($controller_parameter == ZAMESTNANCI) {
+        if ($controller_parameter == CONTROLLER_PARAM_EMPLOYEES) {
             return $this->addEmployee($data_to_insert);
         }
 
-        if ($controller_parameter === VYBEROVE_RIZENI) {
+        if ($controller_parameter === CONTROLLER_PARAM_TENDER) {
             return $this->addTender($data_to_insert);
         }
         unset($data_to_insert['submit']);
@@ -96,17 +96,17 @@ class PersonalistikaModel extends Model {
         $id = $data_to_update['id'];
         unset($data_to_update['id']);
         unset($data_to_update['submit']);
-        if ($controller_parameter === VYBEROVE_RIZENI) {
+        if ($controller_parameter === CONTROLLER_PARAM_TENDER) {
             $data_to_update['candidate_id'] = $this->formatTendersCandidatesToString($data_to_update['candidate_id']);
         }
         return $this->updateTableRow($this->tables[$controller_parameter], ['id' => $id], $data_to_update);
     }
 
     public function deleteData(string $controller_parameter, array $data_to_delete) {
-        if ($controller_parameter == ZAMESTNANCI) {
+        if ($controller_parameter == CONTROLLER_PARAM_EMPLOYEES) {
             return $this->deleteEmployee($data_to_delete);
         }
-        if ($controller_parameter == PRACOVNI_POZICE) {
+        if ($controller_parameter == CONTROLLER_PARAM_JOBS) {
             return $this->deleteJob($data_to_delete);
         }
         $id = $data_to_delete['id'];

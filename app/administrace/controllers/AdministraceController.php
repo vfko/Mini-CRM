@@ -12,11 +12,6 @@ class AdministraceController extends Controller {
     private array $CUSTOM_PAGE_DATA = array('header'=>'Administrace', 'header-icon'=>'fa fa-cog');
     /** */
 
-    const PERSONALISTIKA = 'personalistika';
-    const OBCHOD = 'obchod';
-    const DOPRAVA = 'doprava';
-    const REFERENCE = 'reference';
-
     private object|bool $model = false;
     private array $tables = array();
 
@@ -74,16 +69,16 @@ class AdministraceController extends Controller {
 
     private function setTables(string $controller_parameter) {
         switch ($controller_parameter) {
-            case PERSONALISTIKA:
+            case CONTROLLER_PARAM_HR:
                 $this->setPersonalistikaTables();
                 break;
-            case OBCHOD:
+            case CONTROLLER_PARAM_TRADE:
                 $this->setObchodTables();
                 break;
-            case DOPRAVA:
+            case CONTROLLER_PARAM_DELIVERY:
                 $this->setDopravaTables();
                 break;
-            case REFERENCE:
+            case CONTROLLER_PARAM_REFERENCE:
                 $this->setReferenceTables();
                 break;
         }
