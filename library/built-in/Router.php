@@ -81,9 +81,9 @@ class Router {
     }
 
     private function getListOfApps() {
-        $d = dir("app/");
+        $dir = dir("app/");
         $apps = array();
-        while (false !== ($app = $d->read())) {
+        while (false !== ($app = $dir->read())) {
             $apps[] = $app;
         }
         return $apps;

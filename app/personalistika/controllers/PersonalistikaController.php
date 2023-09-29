@@ -1,5 +1,5 @@
 <?php
-// TODO: Zaměstnanci/ nefunkční add a update
+
 class PersonalistikaController extends Controller {
 
     /**
@@ -13,7 +13,6 @@ class PersonalistikaController extends Controller {
     /** */
 
     private object|bool $model = false;
-    private array $relate_to = array('internal'=>array('key'=>'internal', 'name'=>'Interního zaměstnance'), 'external'=>array('key'=>'external', 'name'=>'Externího zaměstnance'), 'commision_partner'=>array('key'=>'commision_partner', 'name'=>'Provizního partnera'));
     private array $resignation_period = array(
         0=>array('days'=>0, 'name'=>'stanovena dohodou'),
         30=>array('days'=>30, 'name'=>'30 dnů'),
