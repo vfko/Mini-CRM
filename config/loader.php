@@ -29,6 +29,9 @@ include 'library/built-in/Authenticate.php';
 // Flash message
 include 'library/built-in/FlashMessage.php';
 
+// File Controller
+include 'library/built-in/FileController.php';
+
 // PHPMailer
 include 'library/PHPMailer/src/Exception.php';
 include 'library/PHPMailer/src/SMTP.php';

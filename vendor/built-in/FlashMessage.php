@@ -25,7 +25,7 @@ class FlashMessage {
         return '';
     }
 
-    public function setSession(string $session_name, string $session_value) {
+    static function setSession(string $session_name, string $session_value) {
         $_SESSION[$session_name] = $session_value;
     }
 
