@@ -6,49 +6,49 @@
 
 
 // Config
-include 'config/constants.php';
+include $_SERVER['DOCUMENT_ROOT'].'/config/constants.php';
 
 // Router
-include 'library/built-in/Router.php';
+include $_SERVER['DOCUMENT_ROOT'].'/vendor/built-in/Router.php';
 
 // Application
-include 'library/built-in/App.php';
+include $_SERVER['DOCUMENT_ROOT'].'/vendor/built-in/App.php';
 
 // Database
-include_once 'library/built-in/MysqliDb.php';
+include_once $_SERVER['DOCUMENT_ROOT'].'/vendor/built-in/MysqliDb.php';
 
 // Parent Controller
-include 'library/built-in/Controller.php';
+include $_SERVER['DOCUMENT_ROOT'].'/vendor/built-in/Controller.php';
 
 // Parent Model
-include 'library/built-in/Model.php';
+include $_SERVER['DOCUMENT_ROOT'].'/vendor/built-in/Model.php';
 
 // Authenticate
-include 'library/built-in/Authenticate.php';
+include $_SERVER['DOCUMENT_ROOT'].'/vendor/built-in/Authenticate.php';
 
 // Flash message
-include 'library/built-in/FlashMessage.php';
+include $_SERVER['DOCUMENT_ROOT'].'/vendor/built-in/FlashMessage.php';
 
 // File Controller
-include 'library/built-in/FileController.php';
+include $_SERVER['DOCUMENT_ROOT'].'/vendor/built-in/FileController.php';
 
 // PHPMailer
-include 'library/PHPMailer/src/Exception.php';
-include 'library/PHPMailer/src/SMTP.php';
-include 'library/PHPMailer/src/PHPMailer.php';
-include 'library/Mailer.php';
+include $_SERVER['DOCUMENT_ROOT'].'/vendor/PHPMailer/src/Exception.php';
+include $_SERVER['DOCUMENT_ROOT'].'/vendor/PHPMailer/src/SMTP.php';
+include $_SERVER['DOCUMENT_ROOT'].'/vendor/PHPMailer/src/PHPMailer.php';
+include $_SERVER['DOCUMENT_ROOT'].'/vendor/Mailer.php';
 
 // App homepage
-include 'app/homepage/controllers/HomepageController.php';
-include 'app/homepage/models/HomepageModel.php';
+include $_SERVER['DOCUMENT_ROOT'].'/app/homepage/controllers/HomepageController.php';
+include $_SERVER['DOCUMENT_ROOT'].'/app/homepage/models/HomepageModel.php';
 
 // App error-page
-include 'app/error-page/controllers/ErrorPageController.php';
+include $_SERVER['DOCUMENT_ROOT'].'/app/error-page/controllers/ErrorPageController.php';
 
 // App Administrace
-include 'app/administrace/controllers/AdministraceController.php';
-include 'app/administrace/models/AdministraceModel.php';
+include $_SERVER['DOCUMENT_ROOT'].'/app/administrace/controllers/AdministraceController.php';
+include $_SERVER['DOCUMENT_ROOT'].'/app/administrace/models/AdministraceModel.php';
 
 // App Personalistika
-include 'app/personalistika/controllers/PersonalistikaController.php';
-include 'app/personalistika/models/PersonalistikaModel.php';
+include $_SERVER['DOCUMENT_ROOT'].'/app/personalistika/controllers/PersonalistikaController.php';
+include $_SERVER['DOCUMENT_ROOT'].'/app/personalistika/models/PersonalistikaModel.php';
