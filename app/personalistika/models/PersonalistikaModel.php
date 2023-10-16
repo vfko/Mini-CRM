@@ -1,5 +1,7 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+
 class PersonalistikaModel extends Model {
 
     private array $tables = array(
@@ -66,6 +68,21 @@ class PersonalistikaModel extends Model {
         return $result;
     }
 
+    public function getEmployee(string|int $id) {
+        return $this->getTableData(TABLE_EMPLOYEE, 'id,name,surename,work_email', ['id'=>$id]);
+    }
+
+    public function getDocuments(string|int $id) {
+        $path = $_SERVER['DOCUMENT_ROOT'].'/files/documents/'.$id;
+        if (is_dir($path)) {
+            $files = scandir($path);
+            unset($files[array_search('.', $files)]);
+            unset($files[array_search('..', $files)]);
+            return $files;
+        }
+        return array();
+    }
+
     public function addNewData(string $controller_parameter, array $data_to_insert) {
         if ($controller_parameter == CONTROLLER_PARAM_EMPLOYEES) {
             return $this->addEmployee($data_to_insert);
@@ -109,6 +126,9 @@ class PersonalistikaModel extends Model {
         if ($controller_parameter == CONTROLLER_PARAM_JOBS) {
             return $this->deleteJob($data_to_delete);
         }
+        if ($controller_parameter == CONTROLLER_PARAM_DOCUMENTS) {
+            return $this->deleteDocument($data_to_delete);
+        }
         $id = $data_to_delete['id'];
         return $this->deleteTableRow($this->tables[$controller_parameter], ['id'=>$id]);
     }
@@ -127,6 +147,13 @@ class PersonalistikaModel extends Model {
         return $this->deleteTableRow(TABLE_JOB, array('id'=>$id));
     }
 
+    private function deleteDocument(array $data_to_delete) {
+        $id = $data_to_delete['id'];
+        $file_name = $data_to_delete['file_name'];
+        $path = $_SERVER['DOCUMENT_ROOT'].'/files/documents/'.$id.'/'.$file_name;
+        return unlink($path);
+    }
+
     private function formatTendersCandidatesToArray(string $tender_candidates): array {
         return explode('-', trim($tender_candidates, '-'));
     }
@@ -139,5 +166,29 @@ class PersonalistikaModel extends Model {
         return $result;
     }
 
+    public function uploadDocument(string $input_name_param, int|string $id) {
+        $upload_path = $this->createDocumentDirectory($id);
+        FileController::uploadFile($input_name_param, $upload_path);
+    }
+
+    private function createDocumentDirectory(string|int $id) {
+        if (!is_dir($_SERVER['DOCUMENT_ROOT'].'/files/documents/'.$id)) {
+            mkdir($_SERVER['DOCUMENT_ROOT'].'/files/documents/'.$id);
+            return '/files/documents/'.$id;
+        } else {
+            return '/files/documents/'.$id;
+        }
+    }
+
+    public function sendDocument(string|int $id, string $file_name, string $email) {
+        if ($this->checkIfFileExist($file_name, $id)) {
+            return PersonalistikaMailHelpe::sendDocument($email, $file_name, $id);
+        }
+        return false;
+    }
+
+    private function checkIfFileExist(string $file_name, string|int $id) {
+        return file_exists($_SERVER['DOCUMENT_ROOT'].'/files/documents/'.$id.'/'.$file_name);
+    }
     
 }

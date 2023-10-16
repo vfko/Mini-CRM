@@ -47,6 +47,7 @@
                                                 <button type="button" class="btn btn-add btn-sm" data-toggle="modal" data-target="#info-<?= $row['id'] ?>">&nbsp<i class="fa fa-info"></i>&nbsp</button>
                                                 <button type="button" class="btn btn-add btn-sm" data-toggle="modal" data-target="#update-<?= $row['id'] ?>"><i class="fa fa-pencil"></i></button>
                                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete-<?= $row['id'] ?>"><i class="fa fa-trash-o"></i> </button>
+                                                <a href="/personalistika/dokumenty?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm"><i class="fa fa-folder-o" aria-hidden="true"></i></a>
                                             </td>
                                         </tr>
 

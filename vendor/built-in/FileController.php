@@ -48,4 +48,49 @@ abstract class FileController {
         }
         return file_put_contents($file, $content, FILE_APPEND);
     }
+
+    /**
+     * @param string $form_name     name param from <input>
+     * @param string $upload_path   path without, where file have to be stored,
+     */
+    static function uploadFile(string $form_name, string $upload_path): bool {
+        if (isset($_FILES[$form_name])) {
+            $file = $_FILES[$form_name];
+    
+            if ($file['error'] === 0) {
+                $upload_destination = self::buildUploadPath($upload_path, $file['name']);
+                if (move_uploaded_file($file['tmp_name'], $upload_destination)) {
+                    return true;
+                } else {
+                    FlashMessage::setSession(SESSION_FAILURE, "Nepodařilo se nahrát soubor");
+                    return false;
+                }
+            } else {
+                FlashMessage::setSession(SESSION_FAILURE, "Chyba při nahrávání souboru: " . $file['error']);
+                return false;
+            }
+        } else {
+            FlashMessage::setSession(SESSION_FAILURE, "Nebyl vybrán žádný soubor k nahrání.");
+            return false;
+        }
+    }
+
+    static function buildUploadPath(string $upload_path, string $file_name) {
+        $directorys = explode('/', $upload_path);
+        $path = '';
+        if (str_contains($_SERVER['DOCUMENT_ROOT'], $upload_path)) {
+            foreach ($directorys as $dir) {
+                $path = $path.'/'.$dir;
+            }
+            $path = $path.'/'.$file_name;
+            return $path;
+        } else {
+            foreach ($directorys as $dir) {
+                $path = $path.'/'.$dir;
+            }
+            $path = $_SERVER['DOCUMENT_ROOT'].'/'.$path.'/'.$file_name;
+            return $path;
+        }
+    }
+    
 }

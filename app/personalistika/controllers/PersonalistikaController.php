@@ -46,6 +46,9 @@ class PersonalistikaController extends Controller {
         $this->setNationality();
         $this->setKindOfCollaboration();
         $this->setDepartment();
+        $this->setEmployeeId();
+        $this->setEmployeeDocuments();
+        $this->setEmployee();
     }
 
     private function setTableRows() {
@@ -155,6 +158,24 @@ class PersonalistikaController extends Controller {
         }
     }
 
+    private function setEmployeeId() {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_DOCUMENTS) {
+            $this->addTemplateData('id', $this->data['id']);
+        }
+    }
+
+    private function setEmployee() {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_DOCUMENTS) {
+            $this->addTemplateData('employee', $this->model->getEmployee($this->data['id']));
+        }
+    }
+
+    private function setEmployeeDocuments() {
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_DOCUMENTS) {
+            $this->addTemplateData('documents', $this->model->getDocuments($this->data['id']));
+        }
+    }
+
     private function processData() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             switch ($this->data['submit']) {
@@ -167,23 +188,47 @@ class PersonalistikaController extends Controller {
                 case DELETE:
                     $this->deleteData($this->controller_parameters[0]);
                     break;
+                case UPLOAD:
+                    $this->uploadData();
+                    break;
+                case SEND_EMAIL:
+                    $this->sendDocument();
+                    break;
             }
         }
     }
 
     private function addNewData(string $controller_parameter) {
         $this->model->addNewData($controller_parameter, $this->data);
-        header('Location: /personalistika/'.$controller_parameter);
+        Link::redirect(CONTROLLER_PARAM_HR, [$controller_parameter]);
     }
 
     private function updateData(string $controller_parameter) {
         $this->model->updateData($controller_parameter, $this->data);
-        header('Location: /personalistika/'.$controller_parameter);
+        Link::redirect(CONTROLLER_PARAM_HR, [$controller_parameter]);
     }
 
     private function deleteData(string $controller_parameter) {
         $this->model->deleteData($controller_parameter, $this->data);
-        header('Location: /personalistika/'.$controller_parameter);
+        if ($this->controller_parameters[0] == CONTROLLER_PARAM_DOCUMENTS) {
+            Link::redirect(CONTROLLER_PARAM_HR, [$controller_parameter], ['id'=>$this->data['id']]);
+        }
+        Link::redirect(CONTROLLER_PARAM_HR, [$controller_parameter]);
+    }
+
+    private function uploadData() {
+        $this->model->uploadDocument(UPLOAD, $this->data['id']);
+        Link::redirect(CONTROLLER_PARAM_HR, ['dokumenty'], ['id'=>$this->data['id']]);
+    }
+    
+    private function sendDocument() {
+        $result = $this->model->sendDocument($this->data['id'], $this->data['file_name'], $this->data['email']);
+        if ($result) {
+            FlashMessage::setSession(SESSION_SUCCESS, 'Email odeslán');
+        } else {
+            FlashMessage::setSession(SESSION_FAILURE, 'Dokument se nepodařilo odeslat');
+        }
+        Link::redirect(CONTROLLER_PARAM_HR, ['dokumenty'], ['id'=>$this->data['id']]);
     }
 
 }

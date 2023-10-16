@@ -67,6 +67,7 @@ define('SUCCESSFUL_DELETE_MSG', 'The item has been removed');
   define('CONTROLLER_PARAM_EMPL_CONTRACT', 'pracovni-smlouvy'); 
   define('CONTROLLER_PARAM_TENDER', 'vyberove-rizeni');
   define('CONTROLLER_PARAM_JOBS', 'pracovni-pozice');
+  define('CONTROLLER_PARAM_DOCUMENTS', 'dokumenty');
   
   /**
    * Form action
@@ -74,6 +75,8 @@ define('SUCCESSFUL_DELETE_MSG', 'The item has been removed');
   define('ADD', 'add');
   define('UPDATE', 'update');
   define('DELETE', 'delete');
+  define('UPLOAD', 'upload');
+  define('SEND_EMAIL', 'send_email');
 
   /**
    * Jobs ID

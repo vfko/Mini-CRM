@@ -32,6 +32,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/vendor/built-in/FlashMessage.php';
 // File Controller
 include $_SERVER['DOCUMENT_ROOT'].'/vendor/built-in/FileController.php';
 
+// Link
+include $_SERVER['DOCUMENT_ROOT'].'/vendor/built-in/Link.php';
+
 // PHPMailer
 include $_SERVER['DOCUMENT_ROOT'].'/vendor/PHPMailer/src/Exception.php';
 include $_SERVER['DOCUMENT_ROOT'].'/vendor/PHPMailer/src/SMTP.php';
@@ -52,3 +55,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/app/administrace/models/AdministraceModel.ph
 // App Personalistika
 include $_SERVER['DOCUMENT_ROOT'].'/app/personalistika/controllers/PersonalistikaController.php';
 include $_SERVER['DOCUMENT_ROOT'].'/app/personalistika/models/PersonalistikaModel.php';
+include $_SERVER['DOCUMENT_ROOT'].'/app/personalistika/models/helpers/PersonalistikaMailHelpe.php';

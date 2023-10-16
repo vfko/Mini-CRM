@@ -7,7 +7,7 @@ class Controller {
     protected array $controller_parameters; // url parameters /app/controller_parameter/controller_parameter
     protected string $template_path = ''; // TODO manualy change template
     protected array $template_data = array(); // data usage in template 
-    protected array $data;
+    protected array $data = array();
 
     public function __construct(array $_get_data, array $_post_data, array $controller_parameters) {
         $this->filldataArray($_get_data, $_post_data);
