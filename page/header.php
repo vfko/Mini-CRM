@@ -67,7 +67,6 @@
 </head>
 
 <body>
-
       <!-- Site wrapper -->
       <div class="wrapper">
          <header class="main-header">
@@ -159,6 +158,26 @@
                      </ul>
                   </li>
 				<!-- /Hr -->
+
+            <!-- Sales -->
+            <li class="treeview">
+                     <a href="#">
+                     <i class="fa fa-users"></i>
+                     <span>Obchod</span>
+                     <span class="pull-right-container">
+                     <i class="fa fa-angle-left float-right"></i>
+                     </span>
+                     </a>
+                     <ul class="treeview-menu">
+                        <li><a href="#">Kontakty</a></li>
+                        <li><a href="#">Konzultace</a></li>
+                        <li><a href="#">Objednávky</a></li>
+                        <li><a href="#">Reference</a></li>
+                        <li><a href="#">Vydané faktury</a></li>
+                        <li><a href="#">Skladové položky</a></li>
+                     </ul>
+                  </li>
+				<!-- /Sales -->
                   
 				<!-- Settings -->
                   <li class="treeview">

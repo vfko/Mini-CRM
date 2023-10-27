@@ -281,9 +281,9 @@
                                 <!-- Text input-->
                                 <div class="col-md-6 form-group">
                                     <label class="control-label">Týká se</label>
-                                    <select name="relate_to" class="form-control">
+                                    <select name="relate_to_id" class="form-control">
                                         <?php foreach ($template_data['relate_to'] as $relate_to): ?>
-                                            <option value="<?= $relate_to['key'] ?>"><?= $relate_to['name'] ?></option>
+                                            <option value="<?= $relate_to['id'] ?>"><?= $relate_to['name'] ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>

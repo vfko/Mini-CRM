@@ -135,6 +135,12 @@ class PersonalistikaModel extends Model {
 
     private function deleteEmployee(array $data_to_delete) {
         $id = $data_to_delete['id'];
+        $employee_contract = $this->getTableData(TABLE_EMPLOYMENT_CONTRACT, 'id', array('employee_id'=>$id));
+        if ($employee_contract) {
+            FlashMessage::setSession(SESSION_FAILURE, 'Odstraňte nejprve pracovní smlouvu zaměstnance.');
+            Link::redirect('personalistika', array('zamestnanci'));
+            exit();
+        }
         $this->deleteTableRow(TABLE_EMPLOYEE, ['id'=>$id]);
         return $this->deleteTableRow(TABLE_EMPLOYEE_PAYMENT, ['employee_id'=>$id]);
     }

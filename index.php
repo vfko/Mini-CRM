@@ -2,7 +2,7 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/config/loader.php';
 
-// session_start();
+session_start();
 // if (!isset($_SESSION['user_logged_in']) && $_SERVER['REQUEST_URI'] != '/login') {
 // 	header('Location:/login');
 // }
@@ -11,8 +11,11 @@ $page = new App($_SERVER['REQUEST_URI']);
 $template = $page->getTemplate();
 $page_data = $page->getPagedata();
 $template_data = $page->getTemplateData();
+$flash_message = FlashMessage::getFlashMessage();
 
-
+if ($flash_message) {
+    echo $flash_message;
+}
 
 include_once $_SERVER['DOCUMENT_ROOT'].'/page/header.php';
 include_once $template;
