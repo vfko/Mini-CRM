@@ -32,148 +32,83 @@ class PersonalistikaController extends Controller {
 
     private function setTableData() {
         $this->setTableRows();
-        $this->setTypeOfCommissionPartners();
-        $this->setAssignedOperators();
-        $this->setAssignedSellers();
-        $this->setEmployees();
-        $this->setRelateTo();
-        $this->setTypeOfEmploymentContract();
-        $this->setResignationPeriod();
-        $this->setLanguages();
-        $this->setJobs();
-        $this->setSex();
-        $this->setMartialStatus();
-        $this->setNationality();
-        $this->setKindOfCollaboration();
-        $this->setDepartment();
-        $this->setEmployeeId();
-        $this->setEmployeeDocuments();
-        $this->setEmployee();
+
+        switch ($this->controller_parameters[0]) {
+            case CONTROLLER_PARAM_CANDIDATE:
+                $this->setCandidateVariables();
+                break;
+            case CONTROLLER_PARAM_EMPLOYEES:
+                $this->setEmployeesVariables();
+                break;
+            case CONTROLLER_PARAM_EMPL_PAYMENT:
+                $this->setEmplPaymentVariables();
+                break;
+            case CONTROLLER_PARAM_EMPL_CONTRACT:
+                $this->setEmplContractVariables();
+                break;
+            case CONTROLLER_PARAM_TENDER:
+                $this->setTenderVariables();
+                break;
+            case CONTROLLER_PARAM_JOBS:
+                $this->setJobsVariables();
+                break;
+            case CONTROLLER_PARAM_DOCUMENTS:
+                $this->setDocumentVariables();
+                break;
+        }
     }
 
     private function setTableRows() {
-        switch ($this->controller_parameters[0]) {
-            case CONTROLLER_PARAM_CANDIDATE:
-                $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
-                break;
-            case CONTROLLER_PARAM_EMPLOYEES:
-                $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
-                break;
-            case CONTROLLER_PARAM_EMPL_PAYMENT:
-                $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
-                break;
-            case CONTROLLER_PARAM_EMPL_CONTRACT:
-                $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
-                break;
-            case CONTROLLER_PARAM_TENDER:
-                $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
-                break;
-            case CONTROLLER_PARAM_JOBS:
-                $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
-                break;
-        }
+        $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
     }
 
-    private function setKindOfCollaboration() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES || $this->controller_parameters[0] == CONTROLLER_PARAM_CANDIDATE) {
-            $this->addTemplateData('kind_of_collaboration', $this->model->getTableRows(TABLE_KIND_OF_COLLABORATION));
-        }
+    private function setCandidateVariables() {
+        $this->addTemplateData('kind_of_collaboration', $this->model->getTableRows(TABLE_KIND_OF_COLLABORATION));
+        $this->addTemplateData('nationality', $this->model->getTableRows(TABLE_NATIONALITY));
+        $this->addTemplateData('martial_status', $this->model->getTableRows(TABLE_MARTIAL_STATUS));
+        $this->addTemplateData('sex', $this->model->getTableRows(TABLE_SEX));
+        $this->addTemplateData('jobs', $this->model->getTableRows(TABLE_JOB));
+        $this->addTemplateData('languages', $this->model->getTableRows(TABLE_LANGUAGE));
     }
 
-    private function setNationality() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES || $this->controller_parameters[0] == CONTROLLER_PARAM_CANDIDATE) {
-            $this->addTemplateData('nationality', $this->model->getTableRows(TABLE_NATIONALITY));
-        }
+    private function setEmployeesVariables() {
+        $this->addTemplateData('kind_of_collaboration', $this->model->getTableRows(TABLE_KIND_OF_COLLABORATION));
+        $this->addTemplateData('nationality', $this->model->getTableRows(TABLE_NATIONALITY));
+        $this->addTemplateData('martial_status', $this->model->getTableRows(TABLE_MARTIAL_STATUS));
+        $this->addTemplateData('sex', $this->model->getTableRows(TABLE_SEX));
+        $this->addTemplateData('jobs', $this->model->getTableRows(TABLE_JOB));
+        $this->addTemplateData('languages', $this->model->getTableRows(TABLE_LANGUAGE));
+        $this->addTemplateData('operators', $this->model->getOperators());
+        $this->addTemplateData('sellers', $this->model->getSellers());
+        $this->addTemplateData('employees', $this->model->getTableRows(TABLE_EMPLOYEE));
+        $this->addTemplateData('type_of_comm_partners', $this->model->getTableRows(TABLE_TYPE_OF_COMMISSION_PARTNER));
+        $this->addTemplateData('relate_to', $this->model->getTableRows(TABLE_RELATE_TO));
+        $this->addTemplateData('departments', $this->model->getTableRows(TABLE_DEPARTMENT));
     }
 
-    private function setMartialStatus() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES || $this->controller_parameters[0] == CONTROLLER_PARAM_CANDIDATE) {
-            $this->addTemplateData('martial_status', $this->model->getTableRows(TABLE_MARTIAL_STATUS));
-        }
+    private function setEmplPaymentVariables() {
+        $this->addTemplateData('employees', $this->model->getTableRows(TABLE_EMPLOYEE));
     }
 
-    private function setSex() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES || $this->controller_parameters[0] == CONTROLLER_PARAM_CANDIDATE) {
-            $this->addTemplateData('sex', $this->model->getTableRows(TABLE_SEX));
-        }
+    private function setEmplContractVariables() {
+        $this->addTemplateData('employees', $this->model->getTableRows(TABLE_EMPLOYEE));
+        $this->addTemplateData('relate_to', $this->model->getTableRows(TABLE_RELATE_TO));
+        $this->addTemplateData('type_of_empl_contract', $this->model->getTableRows(TABLE_TYPE_OF_EMPL_CONTRACT));
+        $this->addTemplateData('resignation_period', $this->resignation_period);
     }
 
-    private function setJobs() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES || $this->controller_parameters[0] == CONTROLLER_PARAM_CANDIDATE || $this->controller_parameters[0] == CONTROLLER_PARAM_TENDER) {
-            $this->addTemplateData('jobs', $this->model->getTableRows(TABLE_JOB));
-        }
+    private function setTenderVariables() {
+        $this->addTemplateData('jobs', $this->model->getTableRows(TABLE_JOB));
     }
 
-    private function setLanguages() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES || $this->controller_parameters[0] == CONTROLLER_PARAM_CANDIDATE) {
-            $this->addTemplateData('languages', $this->model->getTableRows(TABLE_LANGUAGE));
-        }
+    private function setJobsVariables() {
+        $this->addTemplateData('departments', $this->model->getTableRows(TABLE_DEPARTMENT));
     }
 
-    private function setTypeOfCommissionPartners() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES) {
-            $this->addTemplateData('type_of_comm_partners', $this->model->getTableRows(TABLE_TYPE_OF_COMMISSION_PARTNER));
-        }
-    }
-
-    private function setAssignedOperators() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES) {
-            $this->addTemplateData('operators', $this->model->getOperators());
-        }
-    }
-
-    private function setAssignedSellers() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES) {
-            $this->addTemplateData('sellers', $this->model->getSellers());
-        }
-    }
-
-    private function setEmployees() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPL_CONTRACT || $this->controller_parameters[0] == CONTROLLER_PARAM_EMPL_PAYMENT || $this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES) {
-            $this->addTemplateData('employees', $this->model->getTableRows(TABLE_EMPLOYEE));
-        }
-    }
-
-    private function setRelateTo() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPL_CONTRACT || $this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES) {
-            $this->addTemplateData('relate_to', $this->model->getTableRows(TABLE_RELATE_TO));
-        }
-    }
-
-    private function setTypeOfEmploymentContract() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPL_CONTRACT) {
-            $this->addTemplateData('type_of_empl_contract', $this->model->getTableRows(TABLE_TYPE_OF_EMPL_CONTRACT));
-        }
-    }
-
-    private function setResignationPeriod() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_EMPL_CONTRACT) {
-            $this->addTemplateData('resignation_period', $this->resignation_period);
-        }
-    }
-
-    private function setDepartment() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_JOBS || $this->controller_parameters[0] == CONTROLLER_PARAM_EMPLOYEES) {
-            $this->addTemplateData('departments', $this->model->getTableRows(TABLE_DEPARTMENT));
-        }
-    }
-
-    private function setEmployeeId() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_DOCUMENTS) {
-            $this->addTemplateData('id', $this->data['id']);
-        }
-    }
-
-    private function setEmployee() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_DOCUMENTS) {
-            $this->addTemplateData('employee', $this->model->getEmployee($this->data['id']));
-        }
-    }
-
-    private function setEmployeeDocuments() {
-        if ($this->controller_parameters[0] == CONTROLLER_PARAM_DOCUMENTS) {
-            $this->addTemplateData('documents', $this->model->getDocuments($this->data['id']));
-        }
+    private function setDocumentVariables() {
+        $this->addTemplateData('id', $this->data['id']);
+        $this->addTemplateData('employee', $this->model->getEmployee($this->data['id']));
+        $this->addTemplateData('documents', $this->model->getDocuments($this->data['id']));
     }
 
     private function processData() {

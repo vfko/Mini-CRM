@@ -169,12 +169,12 @@
                      </span>
                      </a>
                      <ul class="treeview-menu">
-                        <li><a href="#">Kontakty</a></li>
-                        <li><a href="#">Konzultace</a></li>
-                        <li><a href="#">Objednávky</a></li>
-                        <li><a href="#">Reference</a></li>
-                        <li><a href="#">Vydané faktury</a></li>
-                        <li><a href="#">Skladové položky</a></li>
+                        <li><a href="/obchod/kontakty">Kontakty</a></li>
+                        <li><a href="/obchod/konzultace">Konzultace</a></li>
+                        <li><a href="/obchod/objednavky">Objednávky</a></li>
+                        <li><a href="/obchod/reference">Reference</a></li>
+                        <li><a href="/obchod/vydane-faktury">Vydané faktury</a></li>
+                        <li><a href="/obchod/skladove-polozky">Skladové položky</a></li>
                      </ul>
                   </li>
 				<!-- /Sales -->

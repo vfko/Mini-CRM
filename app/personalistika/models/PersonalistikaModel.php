@@ -100,7 +100,7 @@ class PersonalistikaModel extends Model {
         $this->insertToTable(TABLE_EMPLOYEE, $data_to_insert);
         $employee_id = $this->db->getInsertId();
         $this->insertToTable(TABLE_SELLER, array('employee_id'=>$employee_id));
-        return $this->insertToTable(TABLE_EMPLOYEE_PAYMENT, array('employee_id'=>$this->db->getInsertId()));
+        return $this->insertToTable(TABLE_EMPLOYEE_PAYMENT, array('employee_id'=>$employee_id));
     }
 
     private function addTender(array $data_to_insert) {

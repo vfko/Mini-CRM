@@ -68,6 +68,15 @@ define('SUCCESSFUL_DELETE_MSG', 'The item has been removed');
   define('CONTROLLER_PARAM_TENDER', 'vyberove-rizeni');
   define('CONTROLLER_PARAM_JOBS', 'pracovni-pozice');
   define('CONTROLLER_PARAM_DOCUMENTS', 'dokumenty');
+
+  /**
+   * Obchod controller parameters
+   */
+  define('CONTROLLER_PARAM_CONTACT', 'kontakty');
+  define('CONTROLLER_PARAM_CONSULTATION', 'konzultace');
+  define('CONTROLLER_PARAM_ORDERS', 'objednavky');
+  define('CONTROLLER_PARAM_INVOICE', 'vydane-faktury');
+  define('CONTROLLER_PARAM_GOODS', 'skladove-polozky');
   
   /**
    * Form action

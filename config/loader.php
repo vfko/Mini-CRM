@@ -56,3 +56,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/app/administrace/models/AdministraceModel.ph
 include $_SERVER['DOCUMENT_ROOT'].'/app/personalistika/controllers/PersonalistikaController.php';
 include $_SERVER['DOCUMENT_ROOT'].'/app/personalistika/models/PersonalistikaModel.php';
 include $_SERVER['DOCUMENT_ROOT'].'/app/personalistika/models/helpers/PersonalistikaMailHelpe.php';
+
+// App Obchod
+include $_SERVER['DOCUMENT_ROOT'].'/app/obchod/controllers/ObchodController.php';
+include $_SERVER['DOCUMENT_ROOT'].'/app/obchod/models/ObchodModel.php';
