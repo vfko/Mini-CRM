@@ -3,7 +3,7 @@
 
 define('TABLE_CANDIDATE', 'candidate');
 define('TABLE_CC_STATE', 'cc_state');
-define('TABLE_CONSILTATION', 'consultation');
+define('TABLE_CONSULTATION', 'consultation');
 define('TABLE_CONSULTATION_STATE', 'consultation_state');
 define('TABLE_CONTACT', 'contact');
 define('TABLE_CUSTOMER', 'customer');

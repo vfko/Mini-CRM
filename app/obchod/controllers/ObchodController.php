@@ -19,7 +19,7 @@ class ObchodController extends Controller {
         $this->addPageData(self::TITLE, self::DESCRIPTION, self::KEY_WORDS, self::LANG, self::CUSTOM_PAGE_DATA);
         $this->model = new ObchodModel;
 
-        $this->setTableData();
+        //$this->setTableData();
     }
 
     private function setTableData() {
