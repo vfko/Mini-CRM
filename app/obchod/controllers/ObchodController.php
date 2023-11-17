@@ -19,7 +19,7 @@ class ObchodController extends Controller {
         $this->addPageData(self::TITLE, self::DESCRIPTION, self::KEY_WORDS, self::LANG, self::CUSTOM_PAGE_DATA);
         $this->model = new ObchodModel;
 
-        //$this->setTableData();
+        $this->setTableData();
     }
 
     private function setTableData() {
@@ -52,7 +52,22 @@ class ObchodController extends Controller {
     }
 
     private function setContactVariables() {
-
+        $this->addTemplateData('gdpr', $this->model->getGdprRows());
+        $this->addTemplateData('gdpr_conditions', $this->model->getData(TABLE_GDPR_CONDITIONS));
+        $this->addTemplateData('type_of_contact', $this->model->getData(TABLE_TYPE_OF_CONTACT));
+        $this->addTemplateData('district', $this->model->getData(TABLE_DISTRICT));
+        $this->addTemplateData('region', $this->model->getData(TABLE_REGION));
+        $this->addTemplateData('household_type', $this->model->getData(TABLE_HOUSEHOLD_TYPE));
+        $this->addTemplateData('type_of_relationship', $this->model->getData(TABLE_TYPE_OF_RELATIONSHIP));
+        $this->addTemplateData('commision_partners', $this->model->getCommisionPartners());
+        // jak vyřešit doporučitele? Ručně zadat client_id (prozatím)?
+        // typ vztahu s doporučitelem +
+        // okres +
+        // kraj +
+        // typ domácnosti +
+        // provizní partner +
+        // operátoři
+        // obchodníci
     }
 
     private function setConsultationVariables() {

@@ -27,6 +27,24 @@ class Model {
         return $this->makeTableRowIdAsKey($this->db->get($table_name, $num_rows, $columns));
     }
 
+    public function getPaginatedRows(string $table_name, int $page_number=null, string|array $columns='*', array $where=null, int $num_rows=null, string $order_by_column=null, string $order_by_direction = "ASC", string $where_operator='=', string $where_condition='AND') {
+        if ($where != null) {
+            foreach ($where as $column=>$value) {
+                $this->db->where($column, $value, $where_operator, $where_condition);
+            }
+        }
+
+        if ($order_by_column != null) {
+            $this->db->orderBy($order_by_column, $order_by_direction);
+        }
+
+        if ($page_number != null) {
+            return $this->makeTableRowIdAsKey($this->db->paginate($table_name, $page_number, $columns));
+        } else {
+            return $this->makeTableRowIdAsKey($this->db->paginate($table_name, 1, $columns));
+        }
+    }
+
     public function insertToTable(string $table, array $data_to_insert, bool $not_null=false) {
         if ($not_null == false) {
             $data_to_insert = $this->validateDataForTable($data_to_insert);

@@ -50,7 +50,12 @@ class AdministraceController extends Controller {
             ['table_name' => TABLE_PLACE_OF_CONSULTATION, 'table_alias' => 'Místo konání', 'data' => $this->model->getTableData(TABLE_PLACE_OF_CONSULTATION)],
             ['table_name' => TABLE_HOUSEHOLD_TYPE, 'table_alias' => 'Typ domácnosti', 'data' => $this->model->getTableData(TABLE_HOUSEHOLD_TYPE)],
             ['table_name' => TABLE_CUSTOMER_STATUS, 'table_alias' => 'Stav zákazníka', 'data' => $this->model->getTableData(TABLE_CUSTOMER_STATUS)],
-            ['table_name' => TABLE_ORDER_STATUS, 'table_alias' => 'Stav objednávky', 'data' => $this->model->getTableData(TABLE_ORDER_STATUS)]
+            ['table_name' => TABLE_ORDER_STATUS, 'table_alias' => 'Stav objednávky', 'data' => $this->model->getTableData(TABLE_ORDER_STATUS)],
+            ['table_name' => TABLE_GDPR_CONDITIONS, 'table_alias' => 'GDPR podmínky použití', 'data' => $this->model->getTableData(TABLE_GDPR_CONDITIONS)],
+            ['table_name' => TABLE_DISTRICT, 'table_alias' => 'Okres', 'data' => $this->model->getTableData(TABLE_DISTRICT)],
+            ['table_name' => TABLE_REGION, 'table_alias' => 'Kraj', 'data' => $this->model->getTableData(TABLE_REGION)],
+            ['table_name' => TABLE_TYPE_OF_CONTACT, 'table_alias' => 'Typ kontaktu', 'data' => $this->model->getTableData(TABLE_TYPE_OF_CONTACT)],
+            ['table_name' => TABLE_TYPE_OF_RELATIONSHIP, 'table_alias' => 'Typ vztahu s doporučitelem', 'data' => $this->model->getTableData(TABLE_TYPE_OF_RELATIONSHIP)]
         ];
     }
 

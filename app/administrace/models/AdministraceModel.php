@@ -31,6 +31,12 @@ class AdministraceModel extends Model {
         $this->deleteSex($data_to_delete);
         $this->deleteTypeOfCommPartner($data_to_delete);
         $this->deleteTypeOfEmplContract($data_to_delete);
+        $this->deleteGdprCondition($data_to_delete);
+        $this->deleteRegion($data_to_delete);
+        $this->deleteDistrict($data_to_delete);
+        $this->deleteHouseholdType($data_to_delete);
+        $this->deleteTypeOfContact($data_to_delete);
+        $this->deleteTypeOfRelationship($data_to_delete);
     }
 
     private function deleteDepartment(array $data_to_delete) {
@@ -88,5 +94,46 @@ class AdministraceModel extends Model {
             return $this->deleteTableRow($data_to_delete['table_name'], ['id'=>$data_to_delete['id']]);
         }
     }
-    
+
+    private function deleteGdprCondition(array $data_to_delete) {
+        if ($data_to_delete['table_name'] == TABLE_GDPR_CONDITIONS) {
+            $this->updateTableRow(TABLE_GDPR, array('gdpr_conditions_id'=>$data_to_delete['id']), array('gdpr_conditions_id'=>NULL));
+            return $this->deleteTableRow($data_to_delete['table_name'], ['id'=>$data_to_delete['id']]);
+        }
+    }
+
+    private function deleteRegion(array $data_to_delete) {
+        if ($data_to_delete['table_name'] == TABLE_REGION) {
+            $this->updateTableRow(TABLE_CONTACT, array('region_id'=>$data_to_delete['id']), array('region_id'=>NULL));
+            return $this->deleteTableRow($data_to_delete['table_name'], ['id'=>$data_to_delete['id']]);
+        }
+    }
+
+    private function deleteDistrict(array $data_to_delete) {
+        if ($data_to_delete['table_name'] == TABLE_DISTRICT) {
+            $this->updateTableRow(TABLE_CONTACT, array('district_id'=>$data_to_delete['id']), array('district_id'=>NULL));
+            return $this->deleteTableRow($data_to_delete['table_name'], ['id'=>$data_to_delete['id']]);
+        }
+    }
+
+    private function deleteHouseholdType(array $data_to_delete) {
+        if ($data_to_delete['table_name'] == TABLE_HOUSEHOLD_TYPE) {
+            $this->updateTableRow(TABLE_CONTACT, array('household_type_id'=>$data_to_delete['id']), array('household_type_id'=>NULL));
+            return $this->deleteTableRow($data_to_delete['table_name'], ['id'=>$data_to_delete['id']]);
+        }
+    }
+
+    private function deleteTypeOfContact(array $data_to_delete) {
+        if ($data_to_delete['table_name'] == TABLE_TYPE_OF_CONTACT) {
+            $this->updateTableRow(TABLE_CONTACT, array('type_of_contact_id'=>$data_to_delete['id']), array('type_of_contact_id'=>NULL));
+            return $this->deleteTableRow($data_to_delete['table_name'], ['id'=>$data_to_delete['id']]);
+        }
+    }
+
+    private function deleteTypeOfRelationship(array $data_to_delete) {
+        if ($data_to_delete['table_name'] == TABLE_TYPE_OF_RELATIONSHIP) {
+            $this->updateTableRow(TABLE_CONTACT, array('type_of_relationship_id'=>$data_to_delete['id']), array('type_of_relationship_id'=>NULL));
+            return $this->deleteTableRow($data_to_delete['table_name'], ['id'=>$data_to_delete['id']]);
+        }
+    }
 }
