@@ -66,47 +66,47 @@
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Týká se</label>
-                                                                        <input type="text" name="relate_to" value="<?= (!empty($template_data['employees'][$row['employee_id']]['relate_to_id'])) ? $template_data['relate_to'][$template_data['employees'][$row['employee_id']]['relate_to_id']]['name'] : null ?>" class="form-control" readonly>
+                                                                        <input type="text" name="relate_to" value="<?= (!empty($template_data['employees'][$row['employee_id']]['relate_to_id'])) ? $template_data['relate_to'][$template_data['employees'][$row['employee_id']]['relate_to_id']]['name'] : null ?>" class="form-control bg-light" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Zaměstnanec</label>
-                                                                        <input type="text" name="relate_to" value="<?= (!empty($row['employee_id'])) ? $template_data['employees'][$row['employee_id']]['name'].' '.$template_data['employees'][$row['employee_id']]['surename'] : null ?>" class="form-control" readonly>
+                                                                        <input type="text" name="relate_to" value="<?= (!empty($row['employee_id'])) ? $template_data['employees'][$row['employee_id']]['name'].' '.$template_data['employees'][$row['employee_id']]['surename'] : null ?>" class="form-control bg-light" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Číslo smlouvy</label>
-                                                                        <input type="text" name="contract_number" value="<?= (!empty($row['contract_number'])) ? $row['contract_number'] : null ?>" class="form-control" readonly>
+                                                                        <input type="text" name="contract_number" value="<?= (!empty($row['contract_number'])) ? $row['contract_number'] : null ?>" class="form-control bg-light" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Typ smlouvy</label>
-                                                                        <input type="text" name="type_of_empl_contract_id" value="<?= (!empty($row['type_of_empl_contract_id'])) ? $template_data['type_of_empl_contract'][$row['type_of_empl_contract_id']]['name'] : null ?>" class="form-control" readonly>
+                                                                        <input type="text" name="type_of_empl_contract_id" value="<?= (!empty($row['type_of_empl_contract_id'])) ? $template_data['type_of_empl_contract'][$row['type_of_empl_contract_id']]['name'] : null ?>" class="form-control bg-light" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Název pracovní smlouvy</label>
-                                                                        <input type="text" name="contract_name" value="<?= (!empty($row['contract_name'])) ? $row['contract_name'] : null ?>" class="form-control" readonly>
+                                                                        <input type="text" name="contract_name" value="<?= (!empty($row['contract_name'])) ? $row['contract_name'] : null ?>" class="form-control bg-light" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Datum počátku</label>
-                                                                        <input type="date" name="start_date" value="<?= (!empty($row['start_date'])) ? $row['start_date'] : null ?>" class="form-control" readonly>
+                                                                        <input type="date" name="start_date" value="<?= (!empty($row['start_date'])) ? $row['start_date'] : null ?>" class="form-control bg-light" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Datum ukončení</label>
-                                                                        <input type="date" name="end_date" value="<?= (!empty($row['end_date'])) ? $row['end_date'] : null ?>" class="form-control" readonly>
+                                                                        <input type="date" name="end_date" value="<?= (!empty($row['end_date'])) ? $row['end_date'] : null ?>" class="form-control bg-light" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Výpovědní lhůta</label>
-                                                                        <input type="text" name="resignation_period" value="<?= (!empty($row['resignation_period'])) ? $template_data['resignation_period'][$row['resignation_period']]['name'] : null ?>" class="form-control" readonly>
+                                                                        <input type="text" name="resignation_period" value="<?= (!empty($row['resignation_period'])) ? $template_data['resignation_period'][$row['resignation_period']]['name'] : null ?>" class="form-control bg-light" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-6 form-group">
                                                                         <label class="control-label">Datum podpisu</label>
-                                                                        <input type="date" name="date_of_signature" value="<?= (!empty($row['date_of_signature'])) ? $row['date_of_signature'] : null ?>" class="form-control" readonly>
+                                                                        <input type="date" name="date_of_signature" value="<?= (!empty($row['date_of_signature'])) ? $row['date_of_signature'] : null ?>" class="form-control bg-light" readonly>
                                                                     </div>
                                                                     <!-- Text input-->
                                                                     <div class="col-md-12 form-group mt-3">

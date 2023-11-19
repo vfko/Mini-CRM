@@ -64,61 +64,61 @@
                                                         <form action="" method="POST" class="form-horizontal">
                                                         <div class="row">
                                                                 <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
+                                                                <div class="col-md-6 form-group">
                                                                     <label class="control-label">Titul</label>
-                                                                    <input type="text" name="title" placeholder="Název" value="<?= $row['title'] ?>" class="form-control" readonly>
+                                                                    <input type="text" name="title" placeholder="Název" value="<?= $row['title'] ?>" class="form-control bg-light" readonly>
                                                                 </div>
                                                                 <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
+                                                                <div class="col-md-6 form-group">
                                                                     <label class="control-label">Jméno</label>
-                                                                    <input type="text" name="name" placeholder="Název" value="<?= $row['name'] ?>" class="form-control" readonly>
+                                                                    <input type="text" name="name" placeholder="Název" value="<?= $row['name'] ?>" class="form-control bg-light" readonly>
                                                                 </div>
                                                                 <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
+                                                                <div class="col-md-6 form-group">
                                                                     <label class="control-label">Příjmení</label>
-                                                                    <input type="text" name="surename" placeholder="Název" value="<?= $row['surename'] ?>" class="form-control" readonly>
+                                                                    <input type="text" name="surename" placeholder="Název" value="<?= $row['surename'] ?>" class="form-control bg-light" readonly>
                                                                 </div>
                                                                 <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
+                                                                <div class="col-md-6 form-group">
                                                                     <label class="control-label">Tel</label>
-                                                                    <input type="text" name="tel" placeholder="Název" value="<?= $row['tel'] ?>" class="form-control" readonly>
+                                                                    <input type="text" name="tel" placeholder="Název" value="<?= $row['tel'] ?>" class="form-control bg-light" readonly>
                                                                 </div>
                                                                 <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
+                                                                <div class="col-md-6 form-group">
                                                                     <label class="control-label">Email</label>
-                                                                    <input type="text" name="email" placeholder="Název" value="<?= $row['email'] ?>" class="form-control" readonly>
+                                                                    <input type="text" name="email" placeholder="Název" value="<?= $row['email'] ?>" class="form-control bg-light" readonly>
+                                                                </div>
+                                                                <!-- Text input-->
+                                                                <div class="col-md-6 form-group">
+                                                                    <label class="control-label">Datum narození</label>
+                                                                    <input type="text" name="birthdate" placeholder="Název" value="<?= date('d.m.Y', strtotime($row['birthdate'])) ?>" class="form-control bg-light" readonly>
+                                                                </div>
+                                                                <!-- Text input-->
+                                                                <div class="col-md-6 form-group">
+                                                                    <label class="control-label">Vzdělání</label>
+                                                                    <input type="text" name="education" placeholder="Název" value="<?= $row['education'] ?>" class="form-control bg-light" readonly>
+                                                                </div>
+                                                                <!-- Text input-->
+                                                                <div class="col-md-6 form-group">
+                                                                    <label class="control-label">Jazyk</label>
+                                                                    <input type="hidden" name="language_id" value="<?= $row['language_id'] ?>">
+                                                                    <input type="text" placeholder="Název" value="<?= $template_data['languages'][$row['language_id']]['name'] ?>" class="form-control bg-light" readonly>
+                                                                </div>
+                                                                <!-- Text input-->
+                                                                <div class="col-md-6 form-group">
+                                                                    <label class="control-label">Pracovní pozice</label>
+                                                                    <input type="hidden" name="job_id" value="<?= $row['job_id'] ?>">
+                                                                    <input type="text" placeholder="Název" value="<?= $template_data['jobs'][$row['job_id']]['name'] ?>" class="form-control bg-light" readonly>
                                                                 </div>
                                                                 <!-- Text input-->
                                                                 <div class="col-md-12 form-group">
                                                                     <label class="control-label">Adresa</label>
-                                                                    <input type="text" name="address" placeholder="Název" value="<?= $row['address'] ?>" class="form-control" readonly>
-                                                                </div>
-                                                                <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
-                                                                    <label class="control-label">Datum narození</label>
-                                                                    <input type="text" name="birthdate" placeholder="Název" value="<?= date('d.m.Y', strtotime($row['birthdate'])) ?>" class="form-control" readonly>
-                                                                </div>
-                                                                <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
-                                                                    <label class="control-label">Vzdělání</label>
-                                                                    <input type="text" name="education" placeholder="Název" value="<?= $row['education'] ?>" class="form-control" readonly>
-                                                                </div>
-                                                                <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
-                                                                    <label class="control-label">Jazyk</label>
-                                                                    <input type="hidden" name="language_id" value="<?= $row['language_id'] ?>">
-                                                                    <input type="text" placeholder="Název" value="<?= $template_data['languages'][$row['language_id']]['name'] ?>" class="form-control" readonly>
-                                                                </div>
-                                                                <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
-                                                                    <label class="control-label">Pracovní pozice</label>
-                                                                    <input type="hidden" name="job_id" value="<?= $row['job_id'] ?>">
-                                                                    <input type="text" placeholder="Název" value="<?= $template_data['jobs'][$row['job_id']]['name'] ?>" class="form-control" readonly>
+                                                                    <input type="text" name="address" placeholder="Název" value="<?= $row['address'] ?>" class="form-control bg-light" readonly>
                                                                 </div>
                                                                 <!-- Text input-->
                                                                 <div class="col-md-12 form-group">
                                                                     <label class="control-label">Poznámka</label>
-                                                                    <input type="text" name="note" placeholder="Název" value="<?= $row['note'] ?>" class="form-control" readonly>
+                                                                    <input type="text" name="note" placeholder="Název" value="<?= $row['note'] ?>" class="form-control bg-light" readonly>
                                                                 </div>
                                                         </div>
                                                         </form>
@@ -150,47 +150,42 @@
                                                         <input type="hidden" name="id" value="<?= $row['id'] ?>">
                                                         <div class="row">
                                                                 <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
+                                                                <div class="col-md-6 form-group">
                                                                     <label class="control-label">Titul</label>
                                                                     <input type="text" name="title" placeholder="Titul" value="<?= $row['title'] ?>" class="form-control">
                                                                 </div>
                                                                 <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
+                                                                <div class="col-md-6 form-group">
                                                                     <label class="control-label">Jméno</label>
                                                                     <input type="text" name="name" placeholder="Jméno" value="<?= $row['name'] ?>" class="form-control">
                                                                 </div>
                                                                 <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
+                                                                <div class="col-md-6 form-group">
                                                                     <label class="control-label">Příjmení</label>
                                                                     <input type="text" name="surename" placeholder="Příjmení" value="<?= $row['surename'] ?>" class="form-control">
                                                                 </div>
                                                                 <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
+                                                                <div class="col-md-6 form-group">
                                                                     <label class="control-label">Tel</label>
                                                                     <input type="text" name="tel" placeholder="Tel" value="<?= $row['tel'] ?>" class="form-control">
                                                                 </div>
                                                                 <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
+                                                                <div class="col-md-6 form-group">
                                                                     <label class="control-label">Email</label>
                                                                     <input type="text" name="email" placeholder="Email" value="<?= $row['email'] ?>" class="form-control">
                                                                 </div>
                                                                 <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
-                                                                    <label class="control-label">Adresa</label>
-                                                                    <input type="text" name="address" placeholder="Adresa" value="<?= $row['address'] ?>" class="form-control">
-                                                                </div>
-                                                                <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
+                                                                <div class="col-md-6 form-group">
                                                                     <label class="control-label">Datum narození</label>
                                                                     <input type="date" name="birthdate" placeholder="Datum narození" value="<?= date('Y-m-d', strtotime($row['birthdate'])) ?>" class="form-control">
                                                                 </div>
                                                                 <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
+                                                                <div class="col-md-6 form-group">
                                                                     <label class="control-label">Vzdělání</label>
                                                                     <input type="text" name="education" placeholder="Vzdělání" value="<?= $row['education'] ?>" class="form-control">
                                                                 </div>
                                                                 <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
+                                                                <div class="col-md-6 form-group">
                                                                     <label class="control-label">Jazyk</label>
                                                                     <select name="language_id" class="form-control">
                                                                         <?php foreach ($template_data['languages'] as $lang): ?>
@@ -199,13 +194,18 @@
                                                                     </select>
                                                                 </div>
                                                                 <!-- Text input-->
-                                                                <div class="col-md-12 form-group">
+                                                                <div class="col-md-6 form-group">
                                                                     <label class="control-label">Pracovní pozice</label>
                                                                     <select name="job_id" class="form-control">
                                                                         <?php foreach ($template_data['jobs'] as $job): ?>
                                                                         <option value="<?= $job['id'] ?>" <?= ($job['id'] == $row['job_id']) ? 'selected' : null ?>><?= $job['name'] ?></option>
                                                                         <?php endforeach ?>
                                                                     </select>
+                                                                </div>
+                                                                <!-- Text input-->
+                                                                <div class="col-md-12 form-group">
+                                                                    <label class="control-label">Adresa</label>
+                                                                    <input type="text" name="address" placeholder="Adresa" value="<?= $row['address'] ?>" class="form-control">
                                                                 </div>
                                                                 <!-- Text input-->
                                                                 <div class="col-md-12 form-group">
@@ -285,47 +285,42 @@
                             <form action="" method="POST" class="form-horizontal">
                             <div class="row">
                                     <!-- Text input-->
-                                    <div class="col-md-12 form-group">
+                                    <div class="col-md-6 form-group">
                                         <label class="control-label">Titul</label>
                                         <input type="text" name="title" placeholder="Titul" value="" class="form-control">
                                     </div>
                                     <!-- Text input-->
-                                    <div class="col-md-12 form-group">
+                                    <div class="col-md-6 form-group">
                                         <label class="control-label">Jméno</label>
                                         <input type="text" name="name" placeholder="Jméno" value="" class="form-control">
                                     </div>
                                     <!-- Text input-->
-                                    <div class="col-md-12 form-group">
+                                    <div class="col-md-6 form-group">
                                         <label class="control-label">Příjmení</label>
                                         <input type="text" name="surename" placeholder="Příjmení" value="" class="form-control">
                                     </div>
                                     <!-- Text input-->
-                                    <div class="col-md-12 form-group">
+                                    <div class="col-md-6 form-group">
                                         <label class="control-label">Tel</label>
                                         <input type="text" name="tel" placeholder="Tel" value="" class="form-control">
                                     </div>
                                     <!-- Text input-->
-                                    <div class="col-md-12 form-group">
+                                    <div class="col-md-6 form-group">
                                         <label class="control-label">Email</label>
                                         <input type="text" name="email" placeholder="Email" value="" class="form-control">
                                     </div>
                                     <!-- Text input-->
-                                    <div class="col-md-12 form-group">
-                                        <label class="control-label">Adresa</label>
-                                        <input type="text" name="address" placeholder="Adresa" value="" class="form-control">
-                                    </div>
-                                    <!-- Text input-->
-                                    <div class="col-md-12 form-group">
+                                    <div class="col-md-6 form-group">
                                         <label class="control-label">Datum narození</label>
                                         <input type="date" name="birthdate" placeholder="Datum narození" value="" class="form-control">
                                     </div>
                                     <!-- Text input-->
-                                    <div class="col-md-12 form-group">
+                                    <div class="col-md-6 form-group">
                                         <label class="control-label">Vzdělání</label>
                                         <input type="text" name="education" placeholder="Vzdělání" value="" class="form-control">
                                     </div>
                                     <!-- Text input-->
-                                    <div class="col-md-12 form-group">
+                                    <div class="col-md-6 form-group">
                                         <label class="control-label">Jazyk</label>
                                         <select name="language_id" class="form-control">
                                             <?php foreach ($template_data['languages'] as $lang): ?>
@@ -334,13 +329,18 @@
                                         </select>
                                     </div>
                                     <!-- Text input-->
-                                    <div class="col-md-12 form-group">
+                                    <div class="col-md-6 form-group">
                                         <label class="control-label">Pracovní pozice</label>
                                         <select name="job_id" class="form-control">
                                             <?php foreach ($template_data['jobs'] as $job): ?>
                                             <option n:foreach="$jobs as $job" value="<?= $job['id'] ?>"><?= $job['name']?></option>
                                             <?php endforeach ?>
                                         </select>
+                                    </div>
+                                    <!-- Text input-->
+                                    <div class="col-md-12 form-group">
+                                        <label class="control-label">Adresa</label>
+                                        <input type="text" name="address" placeholder="Adresa" value="" class="form-control">
                                     </div>
                                     <!-- Text input-->
                                     <div class="col-md-12 form-group">

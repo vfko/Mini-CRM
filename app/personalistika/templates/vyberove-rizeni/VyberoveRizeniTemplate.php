@@ -10,11 +10,9 @@
 
 
                     <div class="card-body">
-                        <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                             <div class="btn-group">
                                 <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#add-item" style="background: #009688;">Přidat výběrové řízení</button>
                             </div>
-                            <!-- ./Plugin content:powerpoint,txt,pdf,png,word,xl -->
 
                             <!-- Table -->
                             <div class="table-responsive">
