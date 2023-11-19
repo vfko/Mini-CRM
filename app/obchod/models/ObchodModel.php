@@ -60,7 +60,20 @@ class ObchodModel extends Model {
     }
 
     public function getCommisionPartners() {
-        return $this->getTableData(TABLE_EMPLOYEE, '*', array('job_id'=>1));
+        return $this->getTableData(TABLE_EMPLOYEE, 'id,name,surename', array('job_id'=>1));
     }
 
+    public function getOperators() {
+        return $this->getTableData(TABLE_EMPLOYEE, 'id,name,surename', array('job_id'=>4));
+    }
+
+    public function getSellers() {
+        return $this->getTableData(TABLE_EMPLOYEE, 'id,name,surename', array('job_id'=>3));
+    }
+
+    public function getNumOfPages() {
+        $num_of_contacts = $this->getTableData(TABLE_CONTACT, 'count(*)')[0]['count(*)'];
+        $num_of_pages = ceil($num_of_contacts / 20);
+        return $num_of_pages;
+    }
 }

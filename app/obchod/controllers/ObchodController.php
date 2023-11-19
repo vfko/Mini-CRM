@@ -48,10 +48,12 @@ class ObchodController extends Controller {
     }
 
     private function setTableRows() {
-        $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
+        $page_number = (isset($this->data['page'])) ? $this->data['page'] : 1;
+        $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]), $page_number);
     }
 
     private function setContactVariables() {
+        $page_number = (isset($this->data['page'])) ? $this->data['page'] : 1;
         $this->addTemplateData('gdpr', $this->model->getGdprRows());
         $this->addTemplateData('gdpr_conditions', $this->model->getData(TABLE_GDPR_CONDITIONS));
         $this->addTemplateData('type_of_contact', $this->model->getData(TABLE_TYPE_OF_CONTACT));
@@ -60,14 +62,18 @@ class ObchodController extends Controller {
         $this->addTemplateData('household_type', $this->model->getData(TABLE_HOUSEHOLD_TYPE));
         $this->addTemplateData('type_of_relationship', $this->model->getData(TABLE_TYPE_OF_RELATIONSHIP));
         $this->addTemplateData('commision_partners', $this->model->getCommisionPartners());
-        // jak vyřešit doporučitele? Ručně zadat client_id (prozatím)?
-        // typ vztahu s doporučitelem +
-        // okres +
-        // kraj +
-        // typ domácnosti +
-        // provizní partner +
-        // operátoři
-        // obchodníci
+        $this->addTemplateData('operators', $this->model->getOperators());
+        $this->addTemplateData('sellers', $this->model->getSellers());
+        $this->addTemplateData('num_of_pages', $this->model->getNumOfPages());
+        $this->addTemplateData('current_page_number', $page_number);
+        $this->addTemplateData('page_button_background', 'background-color: #009688;');
+        // TODO
+        // Add
+        // Update
+        // Delete
+        // GDPR actions
+        // Filter
+        // Import kontaktů
     }
 
     private function setConsultationVariables() {
