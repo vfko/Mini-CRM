@@ -446,7 +446,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" name="submit" value="<?= UPDATE ?>" class="btn btn-add float-left">Uložit změny</button>
+                                                <button type="submit" name="submit" value="<?= UPDATE_GDPR ?>" class="btn btn-add float-left">Uložit změny</button>
                                                 <button type="button" class="btn btn-danger float-left" data-dismiss="modal">Zavřít</button>
                                             </div>
                                             </form>

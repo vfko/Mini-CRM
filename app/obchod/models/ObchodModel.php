@@ -76,4 +76,28 @@ class ObchodModel extends Model {
         $num_of_pages = ceil($num_of_contacts / 20);
         return $num_of_pages;
     }
+
+    public function addNewData(string $controller_parameter, array $data_to_insert) {
+        unset($data_to_insert['submit']);
+        return $this->insertToTable($this->tables[$controller_parameter], $data_to_insert);
+    }
+
+    public function updateData(string $controller_parameter, array $data_to_update) {
+        if ($controller_parameter == 'GDPR') {
+            return $this->updateGdpr($data_to_update);
+        }
+        $id = $data_to_update['id'];
+        unset($data_to_update['id']);
+        unset($data_to_update['submit']);
+        return $this->updateTableRow($this->tables[$controller_parameter], ['id' => $id], $data_to_update);
+    }
+
+    public function deleteData(string $controller_parameter, array $data_to_delete) {
+        $id = $data_to_delete['id'];
+        return $this->deleteTableRow($this->tables[$controller_parameter], ['id'=>$id]);
+    }
+
+    private function updateGdpr(array $data_to_update) {
+
+    }
 }

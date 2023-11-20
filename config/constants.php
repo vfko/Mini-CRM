@@ -86,6 +86,7 @@ define('SUCCESSFUL_DELETE_MSG', 'The item has been removed');
   define('DELETE', 'delete');
   define('UPLOAD', 'upload');
   define('SEND_EMAIL', 'send_email');
+  define('UPDATE_GDPR', 'update_gdpr');
 
   /**
    * Jobs ID

@@ -95,4 +95,35 @@ class ObchodController extends Controller {
     private function setGoodsVariables() {
 
     }
+
+    private function processData() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            switch ($this->data['submit']) {
+                case ADD:
+                    break;
+                case UPDATE:
+                    break;
+                case DELETE:
+                    break;
+                case UPDATE_GDPR:
+                    break;
+            }
+        }
+    }
+
+    private function addNewData(string $controller_parameter) {
+        $this->model->addNewData($controller_parameter, $this->data);
+    }
+
+    private function updateData(string $controller_parameter) {
+        $this->model->updateData($controller_parameter, $this->data);
+    }
+
+    private function deleteData(string $controller_parameter) {
+        $this->model->deleteData($controller_parameter, $this->data);
+    }
+
+    private function updateGdpr(string $controller_parameter) {
+
+    }
 }
