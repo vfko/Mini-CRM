@@ -20,6 +20,7 @@ class ObchodController extends Controller {
         $this->model = new ObchodModel;
 
         $this->setTableData();
+        $this->processData();
     }
 
     private function setTableData() {
@@ -100,12 +101,16 @@ class ObchodController extends Controller {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             switch ($this->data['submit']) {
                 case ADD:
+                    $this->addNewData($this->controller_parameters[0]);
                     break;
                 case UPDATE:
+                    $this->updateData($this->controller_parameters[0]);
                     break;
                 case DELETE:
+                    $this->deleteData($this->controller_parameters[0]);
                     break;
                 case UPDATE_GDPR:
+                    $this->updateGdpr();
                     break;
             }
         }
@@ -123,7 +128,8 @@ class ObchodController extends Controller {
         $this->model->deleteData($controller_parameter, $this->data);
     }
 
-    private function updateGdpr(string $controller_parameter) {
-
+    private function updateGdpr() {
+        $this->model->updateGdpr($this->data);
+        Link::redirect('obchod', $this->controller_parameters);
     }
 }

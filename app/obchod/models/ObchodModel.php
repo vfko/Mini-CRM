@@ -37,7 +37,7 @@ class ObchodModel extends Model {
     public function getGdprRows() {
         $contacts_with_gdpr_record = array();
         foreach ($this->contacts as $contact) {
-            if ($contact['gdpr_record'] == 1) {
+            if ($contact['gdpr_id'] != null) {
                 $contacts_with_gdpr_record[] = $contact['id'];
             }
         }
@@ -97,7 +97,22 @@ class ObchodModel extends Model {
         return $this->deleteTableRow($this->tables[$controller_parameter], ['id'=>$id]);
     }
 
-    private function updateGdpr(array $data_to_update) {
+    public function updateGdpr(array $data_to_update) {
+        unset($data_to_update['submit']);
+        $gdpr_id = ($data_to_update['id'] != null) ? $data_to_update['id'] : false;
+        if (!$gdpr_id) {
+            return $this->addNewGdpr($data_to_update);
+        }
+        return $this->updateTableRow(TABLE_GDPR, array('id' => $gdpr_id), $data_to_update,);
+    }
 
+    private function addNewGdpr(array $data_to_insert) {
+        unset($data_to_insert['id']);
+        $this->insertToTable(TABLE_GDPR, $data_to_insert);
+        $gdpr_id = $this->db->getInsertId();
+        $contact_id = $data_to_insert['contact_id'];
+        die(print($contact_id));
+        $this->updateTableRow(TABLE_CONTACT, array('id'=>$contact_id), array('gdpr_id'=>$gdpr_id));
+        return;
     }
 }

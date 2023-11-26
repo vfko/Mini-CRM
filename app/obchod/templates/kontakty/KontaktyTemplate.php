@@ -37,13 +37,13 @@
                                     <tbody>
                                     <tr>
                                         <td><?= $row['client_id'] ?></td>
-                                        <td><?= $template_data['type_of_contact'][$row['type_of_contact_id']]['name'] ?></td>
+                                        <td><?= (isset($template_data['type_of_contact'][$row['type_of_contact_id']])) ? $template_data['type_of_contact'][$row['type_of_contact_id']]['name'] : 'Neuvedeno' ?></td>
                                         <td><?= $row['name'] ?></td>
                                         <td><?= $row['surename'] ?></td>
                                         <td><?= $row['tel'] ?></td>
                                         <td><?= $row['email'] ?></td>
                                         <td></td>
-                                        <td><?= ($row['gdpr_record'] == 1) ? 'ANO' : 'NE' ?></td>
+                                        <td><?= ($row['gdpr_id'] != null) ? 'ANO' : 'NE' ?></td>
                                         <td>
                                             <button type="button" class="btn btn-add btn-sm" data-toggle="modal" data-target="#info-<?= $row['id'] ?>">&nbsp<i class="fa fa-info"></i>&nbsp</button>
                                             <button type="button" class="btn btn-add btn-sm" data-toggle="modal" data-target="#update-<?= $row['id'] ?>"><i class="fa fa-pencil"></i></button>
@@ -399,37 +399,38 @@
                                                 
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                                                        <input type="hidden" name="id" value="<?= (isset($row['gdpr_id'])) ? $row['gdpr_id'] : null ?>">
+                                                        <input type="hidden" name="contact_id" value="<?= $row['id'] ?>">
                                                         <div class="row">
                                                                 <!-- Text input-->
                                                                 <div class="col-md-12 form-group">
                                                                     <label class="control-label">Souhlas udělen pro tel</label>
-                                                                    <input type="text" name="tel_consent_granted" value="<?= $template_data['gdpr'][$row['id']]['tel_consent_granted'] ?>" class="form-control">
+                                                                    <input type="text" name="tel_consent_granted" value="<?= (isset($template_data['gdpr'][$row['id']])) ? $template_data['gdpr'][$row['gdpr_id']]['tel_consent_granted'] : null ?>" class="form-control">
                                                                 </div>
                                                                 <!-- Text input-->
                                                                 <div class="col-md-6 form-group">
                                                                     <label class="control-label">Souhlas udělen dne</label>
-                                                                    <input type="date" name="tel_start_date" value="<?= $template_data['gdpr'][$row['id']]['tel_start_date'] ?>" class="form-control">
+                                                                    <input type="date" name="tel_start_date" value="<?= (isset($template_data['gdpr'][$row['id']])) ? $template_data['gdpr'][$row['gdpr_id']]['tel_start_date'] : null ?>" class="form-control">
                                                                 </div>
                                                                 <!-- Text input-->
                                                                 <div class="col-md-6 form-group">
                                                                     <label class="control-label">Souhlas odebrán dne</label>
-                                                                    <input type="date" name="tel_end_date" value="<?= $template_data['gdpr'][$row['id']]['tel_end_date'] ?>" class="form-control">
+                                                                    <input type="date" name="tel_end_date" value="<?= (isset($template_data['gdpr'][$row['id']])) ? $template_data['gdpr'][$row['gdpr_id']]['tel_end_date'] : null ?>" class="form-control">
                                                                 </div><br><br>
                                                                 <!-- Text input-->
                                                                 <div class="col-md-12 form-group">
                                                                     <label class="control-label">Souhlas udělen pro email</label>
-                                                                    <input type="text" name="email_consent_granted" value="<?= $template_data['gdpr'][$row['id']]['email_consent_granted'] ?>" class="form-control">
+                                                                    <input type="text" name="email_consent_granted" value="<?= (isset($template_data['gdpr'][$row['id']])) ? $template_data['gdpr'][$row['gdpr_id']]['email_consent_granted'] : null ?>" class="form-control">
                                                                 </div>
                                                                 <!-- Text input-->
                                                                 <div class="col-md-6 form-group">
                                                                     <label class="control-label">Souhlas udělen dne</label>
-                                                                    <input type="date" name="email_start_date" value="<?= $template_data['gdpr'][$row['id']]['email_start_date'] ?>" class="form-control">
+                                                                    <input type="date" name="email_start_date" value="<?= (isset($template_data['gdpr'][$row['id']])) ? $template_data['gdpr'][$row['gdpr_id']]['email_start_date'] : null ?>" class="form-control">
                                                                 </div>
                                                                 <!-- Text input-->
                                                                 <div class="col-md-6 form-group">
                                                                     <label class="control-label">Souhlas odebrán dne</label>
-                                                                    <input type="date" name="email_end_date" value="<?= $template_data['gdpr'][$row['id']]['email_end_date'] ?>" class="form-control">
+                                                                    <input type="date" name="email_end_date" value="<?= (isset($template_data['gdpr'][$row['id']])) ? $template_data['gdpr'][$row['gdpr_id']]['email_end_date'] : null ?>" class="form-control">
                                                                 </div>
                                                                 <!-- Text input-->
                                                                 <div class="col-md-12 form-group">
@@ -437,7 +438,7 @@
                                                                     <select name="gdpr_conditions_id" class="form-control">
                                                                         <option value="NULL">Bez podmínek</option>
                                                                         <?php foreach ($template_data['gdpr_conditions'] as $condition): ?>
-                                                                            <option value="<?= $condition['id'] ?>" <?= ($template_data['gdpr'][$row['id']]['gdpr_conditions_id'] == $condition['id']) ? 'selected' : null ?>><?= $condition['name'] ?></option>
+                                                                            <option value="<?= $condition['id'] ?>" <?= (isset($template_data['gdpr'][$row['id']]) && $template_data['gdpr'][$row['gdpr_id']]['gdpr_conditions_id'] == $condition['id']) ? 'selected' : null ?>><?= $condition['name'] ?></option>
                                                                         <?php endforeach ?>
                                                                     </select>
                                                                 </div>
