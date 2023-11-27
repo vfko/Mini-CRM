@@ -57,27 +57,27 @@
                                                             <!-- Text input-->
                                                             <div class="col-md-6 form-group">
                                                                 <label class="control-label">Číslo účtu</label>
-                                                                <input type="text" name="bank_account_num" value="" class="form-control">
+                                                                <input type="text" name="bank_account_num" value="<?= $row['bank_account_num'] ?>" class="form-control">
                                                             </div>
                                                             <!-- Text input-->
                                                             <div class="col-md-6 form-group">
                                                                 <label class="control-label">Mzda (DPP)</label>
-                                                                <input type="text" name="wage" value="" class="form-control">
+                                                                <input type="text" name="wage" value="<?= $row['wage'] ?>" class="form-control">
                                                             </div>
                                                             <!-- Text input-->
                                                             <div class="col-md-6 form-group">
                                                                 <label class="control-label">IČO</label>
-                                                                <input type="text" name="ico" value="" class="form-control">
+                                                                <input type="text" name="ico" value="<?= $row['ico'] ?>" class="form-control">
                                                             </div>
                                                             <!-- Text input-->
                                                             <div class="col-md-6 form-group">
                                                                 <label class="control-label">DIČ</label>
-                                                                <input type="text" name="dic" value="" class="form-control">
+                                                                <input type="text" name="dic" value="<?= $row['dic'] ?>" class="form-control">
                                                             </div>
                                                             <!-- Text input-->
-                                                            <div class="col-md-6 form-group">
+                                                            <div class="col-md-12 form-group">
                                                                 <label class="control-label">Další mzdové podmínky</label>
-                                                                <input type="text" name="wage_conditions" value="" class="form-control">
+                                                                <input type="text" name="wage_conditions" value="<?= $row['wage_conditions'] ?>" class="form-control">
                                                             </div>
                                                         </div>
                                                     </div>

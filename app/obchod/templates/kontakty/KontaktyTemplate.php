@@ -42,7 +42,7 @@
                                         <td><?= $row['surename'] ?></td>
                                         <td><?= $row['tel'] ?></td>
                                         <td><?= $row['email'] ?></td>
-                                        <td></td>
+                                        <td><?= $row['referrer_id'] ?></td>
                                         <td><?= ($row['gdpr_id'] != null) ? 'ANO' : 'NE' ?></td>
                                         <td>
                                             <button type="button" class="btn btn-add btn-sm" data-toggle="modal" data-target="#info-<?= $row['id'] ?>">&nbsp<i class="fa fa-info"></i>&nbsp</button>

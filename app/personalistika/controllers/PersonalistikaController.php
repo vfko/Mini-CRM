@@ -59,7 +59,9 @@ class PersonalistikaController extends Controller {
     }
 
     private function setTableRows() {
-        $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
+        if ($this->controller_parameters[0] != CONTROLLER_PARAM_DOCUMENTS) {
+            $this->addTemplateData('rows', $this->model->getRows($this->controller_parameters[0]));
+        }
     }
 
     private function setCandidateVariables() {

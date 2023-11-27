@@ -118,14 +118,17 @@ class ObchodController extends Controller {
 
     private function addNewData(string $controller_parameter) {
         $this->model->addNewData($controller_parameter, $this->data);
+        Link::redirect('obchod', $this->controller_parameters);
     }
 
     private function updateData(string $controller_parameter) {
         $this->model->updateData($controller_parameter, $this->data);
+        Link::redirect('obchod', $this->controller_parameters);
     }
 
     private function deleteData(string $controller_parameter) {
         $this->model->deleteData($controller_parameter, $this->data);
+        Link::redirect('obchod', $this->controller_parameters);
     }
 
     private function updateGdpr() {
