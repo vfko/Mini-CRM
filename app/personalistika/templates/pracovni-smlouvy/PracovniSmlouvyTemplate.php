@@ -44,7 +44,6 @@
                                             <td>
                                                 <button type="button" class="btn btn-add btn-sm" data-toggle="modal" data-target="#info-<?= $row['id'] ?>">&nbsp<i class="fa fa-info"></i>&nbsp</button>
                                                 <button type="button" class="btn btn-add btn-sm" data-toggle="modal" data-target="#update-<?= $row['id'] ?>"><i class="fa fa-pencil"></i></button>
-                                                <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#update-<?= $row['id'] ?>"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></button>
                                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete-<?= $row['id'] ?>"><i class="fa fa-trash-o"></i> </button>
                                             </td>
                                         </tr>
@@ -130,7 +129,7 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                             <div class="modal-header modal-header-primary">
-                                                <h3><i class="fa fa-user m-r-5"></i> Upravit pracovní pozici</h3>
+                                                <h3><i class="fa fa-user m-r-5"></i> Upravit pracovní smlouvu</h3>
                                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                             </div>
                                             <form action="" method="POST" class="form-horizontal">
@@ -145,7 +144,7 @@
                                                                 <label class="control-label">Týká se</label>
                                                                 <select name="relate_to" class="form-control">
                                                                     <?php foreach ($template_data['relate_to'] as $relate_to): ?>
-                                                                        <option value="<?= $relate_to['key'] ?>" <?= ($row['relate_to_id'] == $relate_to['key']) ? 'selected' : null ?>><?= $relate_to['name'] ?></option>
+                                                                        <option value="<?= $relate_to['id'] ?>" <?= ($template_data['employees'][$row['employee_id']]['relate_to_id'] == $relate_to['id']) ? 'selected' : null ?>><?= $relate_to['name'] ?></option>
                                                                     <?php endforeach ?>
                                                                 </select>
                                                             </div>
@@ -269,7 +268,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
             <div class="modal-header modal-header-primary">
-                <h3><i class="fa fa-user m-r-5"></i> Přidat zaměsnance</h3>
+                <h3><i class="fa fa-user m-r-5"></i> Nová pracovní smlouva</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
